@@ -42,6 +42,7 @@ h1{font-family:'Noto Serif KR',serif;font-size:clamp(22px,3.2vw,30px);font-weigh
 .panes{flex:1;display:grid;gap:9px;padding:9px;min-height:0}
 .panes.weekly{grid-template-columns:minmax(0,1fr) minmax(0,1.12fr) 106px}
 .panes.monthly{grid-template-columns:minmax(0,.72fr) minmax(0,1.3fr) 106px}
+.panes.ref{grid-template-columns:minmax(0,1fr) 106px}
 .leftcol{display:flex;flex-direction:column;gap:9px;min-height:0}
 .pane{background:#fff;border:1px solid var(--bordstrong);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-height:0}
 .pane .ph{font-size:12.5px;font-family:'DM Mono',monospace;padding:7px 11px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px;font-weight:500}
@@ -80,9 +81,16 @@ h1{font-family:'Noto Serif KR',serif;font-size:clamp(22px,3.2vw,30px);font-weigh
 .mlink:hover{border-color:var(--teal);background:#eef6f5}
 .note{font-size:13.5px;color:var(--text);padding:14px;line-height:1.75}
 @media(max-width:860px){
- .panes.weekly,.panes.monthly{grid-template-columns:1fr;grid-auto-rows:minmax(74vh,auto)}
- .rail{flex-direction:row;flex-wrap:wrap;justify-content:center;order:-1}
- .rbtn{min-width:104px}
+ .panes.weekly,.panes.monthly,.panes.ref{grid-template-columns:1fr;grid-auto-rows:auto;align-content:start;overflow-y:auto;-webkit-overflow-scrolling:touch}
+ .rail{flex-direction:row;flex-wrap:wrap;justify-content:center;order:-1;gap:6px}
+ .rbtn{flex:1 1 28%;min-width:88px;min-height:44px;font-size:11.5px}
+ .testwrap{order:1;min-height:84vh}
+ .leftcol{order:2}
+ .leftcol .pane{min-height:60vh}
+ .panes.ref .pane{min-height:82vh}
+ .vhead .vt{font-size:14px}
+ .panes .ph{padding:9px 11px}
+ .opt,.qzbtn{font-size:15px}
 }
 </style></head><body>
 
@@ -194,7 +202,7 @@ var UPTO=parseInt(QS.get("upto"),10); if(!UPTO||isNaN(UPTO)||UPTO<1) UPTO=99;
  var ex=byId("extra");
  EXTRA.forEach(function(e){
   var b=document.createElement("div");b.className="xbtn";b.innerHTML='<span>▣</span>'+e.n;
-  b.onclick=function(){window.open(enc(e.f),"_blank");};ex.appendChild(b);
+  b.onclick=function(){openRef(e.f,e.n);};ex.appendChild(b);
  });
 })();
 
@@ -237,6 +245,17 @@ function updateStageBtns(){
  var s=byId("solBtn"), inf=byId("infoBtn");
  if(s){ s.textContent=(stage==="sol")?"평가로 돌아가기":"해설"; s.classList.toggle("act",stage==="sol"); }
  if(inf){ inf.textContent=(stage==="info")?"돌아가기":"정보"; inf.classList.toggle("act",stage==="info"); }
+}
+
+function openRef(file,name){
+ CUR=null; stage="ref";
+ byId("vchip").textContent="자료"; byId("vchip").className="chip";
+ byId("vtitle").textContent=name; byId("vdate").textContent="참고 자료";
+ var p=byId("panes"); p.className="panes ref";
+ p.innerHTML='<div class="pane"><div class="ph info"><span class="nmtxt">'+name+'</span></div><iframe id="refframe" src="'+enc(file)+'"></iframe></div>'+
+   '<div class="rail">'+railBtn("메인화면 가기","목록(메인)으로","closeView()")+railBtn("전체화면","전체화면 토글","toggleFull()","fullBtn")+'</div>';
+ syncFullBtn();
+ showView();
 }
 
 function openWeek(w){
