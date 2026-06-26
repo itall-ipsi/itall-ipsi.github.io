@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>정시 환산점수의 이해 — 세부안내</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffffff;--surface:#fffdf7;--surface2:#fbf6ea;--border:#e7dec9;--text:#3a3429;--dim:#8a7f6b;--accent:#1c6b6e;--green:#2f7d4f;--red:#bf3b34;--yellow:#b56a27;--purple:#7a5ea8;--ink:#231f17}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:400;line-height:1.8;margin:0;padding:52px 20px 110px}
+.wrap{max-width:820px;margin:0 auto}
+.kick{font-family:'DM Mono',monospace;color:var(--accent);letter-spacing:2.5px;font-size:12.5px;text-transform:uppercase}
+.badge{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);border:1px solid var(--accent);border-radius:5px;padding:1px 8px;margin-left:8px;vertical-align:3px}
+h1{font-family:'Noto Serif KR',serif;font-size:clamp(22px,3.4vw,32px);font-weight:900;letter-spacing:-.01em;line-height:1.3;color:var(--ink);border-bottom:3px solid var(--accent);padding-bottom:14px;margin:6px 0 4px}
+.meta{color:var(--dim);font-family:'DM Mono',monospace;font-size:12.5px;margin-bottom:8px}
+h2{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:700;margin:32px 0 10px;color:var(--ink)}
+h2:before{content:"";display:inline-block;width:7px;height:22px;background:var(--accent);border-radius:2px;margin-right:10px;vertical-align:-3px}
+h3{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:600;color:var(--ink);margin:18px 0 6px}
+p,li{font-size:16px;color:var(--text)}
+td,th{font-size:14px;color:var(--text)}
+strong{color:var(--ink);font-weight:700}em{color:var(--accent);font-style:normal;font-weight:500}
+ul{padding-left:20px}li{margin:4px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+th{background:var(--surface2);color:var(--ink);text-align:left;padding:9px 12px;border-bottom:2px solid #e0d5bd;font-weight:700}
+td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top}
+.lead{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:14px 18px;margin:14px 0;font-size:16px}
+.key{background:#eaf5ec;border:1px solid #c3e0ca;border-left:4px solid var(--green);border-radius:8px;padding:14px 18px;margin:18px 0;color:#2b3a2f}
+.key b{color:var(--green)}
+.warn{background:#fbf3e4;border:1px solid #ecdcc0;border-left:4px solid var(--yellow);border-radius:8px;padding:12px 16px;margin:14px 0;font-size:14.5px;color:#5b4a30}
+.warn b{color:var(--yellow)}
+.faq{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin:12px 0}
+.faq .q{color:var(--ink);font-weight:700}.faq .a{color:var(--text);margin-top:4px}
+.xref{background:#f3eee2;border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:8px;padding:14px 18px;margin:18px 0;color:#43394f}
+.xref b{color:var(--purple)}
+.foot{color:var(--dim);font-size:12.5px;margin-top:40px;border-top:1px solid #e0d5bd;padding-top:12px}
+.tag{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;color:var(--green);border:1px solid #c3e0ca;border-radius:5px;padding:1px 7px;margin-left:6px}
+.b1{color:#1c6b6e}.b2{color:#2f7d4f}.b3{color:#b56a27}.b4{color:#bf3b34}
+code{font-family:'DM Mono',monospace;font-size:13px;color:var(--accent)}
+</style></head><body><div class="wrap">
+<div class="kick">WEEK 9 · 세부안내(참고서)</div><h1>정시 환산점수의 이해 — 세부안내</h1><p class="meta">9주차 심화 학습서 · 난이도 ★★★ 상급</p>
+<div class="lead">정시는 수능 성적을 <b>대학별 환산점수</b>로 바꿔 비교한다. 같은 수능 성적도 대학마다 <b>영역 반영비율·활용지표·영어 가감점</b>이 달라 유불리가 갈린다. 9주차는 "왜 내 점수가 어떤 대학에선 유리하고 어떤 대학에선 불리한가"의 원리를 익힌다.</div>
+
+<h2>1. 환산점수란 — 대학마다 '다른 자'로 잰다</h2>
+<p><strong>환산점수</strong>는 수능 성적을 대학이 정한 공식으로 변환한 값이다. 전국 공통 점수가 아니라 <em>대학마다 다른 자</em>로 재는 것이라, "수능 점수가 같으면 어디나 같다"는 착각은 금물이다.</p>
+
+<h2>2. 영역 반영비율</h2>
+<p>국어·수학·영어·탐구를 <strong>대학·계열마다 다른 비율</strong>로 반영한다. 통상 인문은 국어·탐구, 자연은 수학·과탐 비중이 큰 경향. 핵심은 <em>내 강점 영역의 비중이 큰 대학</em>이 유리하다는 점이다. 그래서 정시 설계는 학생 성적의 <strong>영역별 강·약점 파악</strong>에서 출발한다.</p>
+
+<h2>3. 활용지표 — 표준점수 · 백분위 · 등급</h2>
+<table><tr><th>지표</th><th>의미</th><th>직관</th></tr>
+<tr><td>표준점수</td><td>평균·표준편차 기반 <b>상대 점수</b></td><td>평균↓면 상위권 최고점↑ <b>경향</b>(정비례 아님)</td></tr>
+<tr><td>백분위</td><td>전체 중 상대 위치(%)</td><td>"상위 몇 %"인지</td></tr>
+<tr><td>등급</td><td>백분위를 구간으로 나눈 1~9</td><td>영어·한국사는 절대평가 등급</td></tr></table>
+<p>대학마다 <em>어떤 지표를 쓰는지</em>(표준점수 중심/백분위 중심)가 달라, 같은 학생도 대학별로 유불리가 생긴다.</p>
+
+<h2>4. 영어·한국사 — 가감점</h2>
+<p>영어·한국사는 절대평가라 비율이 아닌 <strong>등급별 가산/감점(가감점)</strong>으로 반영된다. 같은 영어 2등급이라도 <em>등급 간 점수차가 큰 대학</em>에서는 타격이 크고, 작은 대학에서는 영향이 적다. 영어가 강하면 등급 간 점수차가 큰 대학이 유리할 수 있다.</p>
+
+<h2>5. 2028 통합형과 환산</h2>
+<p>국·수·탐 선택과목이 폐지되면서(W3) <strong>선택과목 간 표준점수 보정(유불리) 문제 자체가 축소</strong>된다. 즉 '어떤 선택과목을 골랐나'로 갈리던 유불리가 줄고, 대학별 반영비율·지표 선택이 더 중요해진다.</p>
+
+<h2>6. 관리자 상담 활용</h2>
+<ul>
+<li>"수능 점수 같으면 어디나 같다"는 오해 교정 → <b>학생 성적표를 대학별 환산식에 넣어 유리한 대학을 찾는 것</b>이 정시 컨설팅의 핵심.</li>
+<li>먼저 <b>영역별 강·약점</b> 파악 → 강점 비중이 큰 환산식의 대학 탐색.</li>
+</ul>
+
+<div class="faq"><div class="q">Q1. 표준점수와 백분위 중 뭐가 더 중요한가요?</div><div class="a">A. 대학마다 쓰는 지표가 다르다. 표준점수는 평균·표준편차 기반 상대 점수, 백분위는 상위 누적 위치(%)다. 목표 대학이 무엇을 쓰는지에 따라 같은 성적도 유불리가 갈린다.</div></div>
+<div class="faq"><div class="q">Q2. 영어 1등급이면 어디나 똑같이 유리한가요?</div><div class="a">A. 아니다. 등급 간 점수차(가감점)가 대학마다 달라, 영어 비중·점수차가 큰 대학에서 더 유리하다.</div></div>
+<div class="faq"><div class="q">Q3. 정시 지원에서 가장 먼저 할 일은?</div><div class="a">A. 학생 성적의 영역별 강·약점 파악. 그래야 어떤 환산식(반영비율·지표)이 유리한지 찾을 수 있다.</div></div>
+
+<div class="xref"><b>교차학습</b> · 통합형 수능(선택과목 폐지) → <b>W3</b> · 수능최저 읽기 → <b>W10</b> · 메디컬 대학별 정시 방식 → <b>W14</b> · 수도권 정시 3유형 → <b>W15</b></div>
+<div class="key"><b>핵심 정리</b> 환산점수=대학별 공식 변환 · 반영비율 대학·계열마다 다름 · 표준점수=성적 분포(평균·표준편차) 기반 상대점수(평균↓면 상위권↑ 경향)/백분위=상대 위치% · 영어·한국사=등급별 가감점 · 같은 성적도 대학별 유불리 · 설계는 강·약점 파악부터</div>
+<div class="foot">잇올 입시연구소 · 원장·부원장 입시상식 프로그램 · 세부안내(참고서) · 본 자료는 내부 학습용. 대학별 세부·수능최저·정시 환산·검정고시 자격·일정은 어디가(adiga.kr)·각 대학 2028 모집요강 최종본으로 확인. 일부 비율·분류는 기관·시행계획(2026-06-02 정리) 기반으로 최종본과 차이가 있을 수 있음.</div>
+</div></body></html>
