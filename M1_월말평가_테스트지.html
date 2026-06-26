@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>월말평가 1개월(누적) — W1~W4 — 테스트지</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4eee0;--card:#fffdf7;--border:#e7dec9;--bordstrong:#e0d5bd;--ink:#231f17;--text:#3a3429;--dim:#8a7f6b;--dim2:#9a8f79;--teal:#1c6b6e;--green:#2f7d4f;--gbg:#eaf5ec;--gbd:#c3e0ca;--red:#bf3b34;--rbg:#fbeeec;--rbd:#eccac6;--amber:#b56a27;--abg:#fbf3e4;--abd:#ecdcc0}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:400;line-height:1.7;margin:0;padding:52px 20px 110px}
+.wrap{max-width:800px;margin:0 auto}
+.kick{font-family:'DM Mono',monospace;color:var(--teal);letter-spacing:2.5px;font-size:12.5px;text-transform:uppercase}
+h1{font-family:'Noto Serif KR',serif;font-size:clamp(21px,3vw,29px);font-weight:900;color:var(--ink);border-bottom:3px solid var(--teal);padding-bottom:14px;margin:6px 0 6px}
+.meta{color:var(--dim);font-family:'DM Mono',monospace;font-size:13px;margin:6px 0 4px}
+.hint{color:var(--dim);font-size:13.5px;margin:8px 0}
+.name{margin:18px 0}
+label.nm{display:block;font-size:14px;color:var(--dim);margin-bottom:6px}
+.name input{width:100%;max-width:360px;background:var(--card);border:1px solid var(--bordstrong);border-radius:8px;color:var(--ink);padding:11px 14px;font-size:15px;font-family:inherit}
+.q{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin:16px 0}
+.qh{font-weight:700;color:var(--ink);font-size:15.5px;margin-bottom:8px}
+.qh .n{font-family:'Noto Serif KR',serif;font-weight:900;color:var(--teal);margin-right:8px}
+.badge{font-size:11.5px;font-family:'DM Mono',monospace;color:var(--dim);border:1px solid var(--border);border-radius:5px;padding:1px 7px;margin-left:8px}
+.opt{display:block;background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:8px 0;cursor:pointer;font-size:15px;transition:.12s;color:var(--text)}
+.opt:hover{border-color:var(--teal)}
+.opt input{margin-right:10px;accent-color:var(--teal)}
+.short input{width:100%;background:#fff;border:1px solid var(--bordstrong);border-radius:8px;color:var(--ink);padding:10px 14px;font-size:15px;font-family:inherit}
+button{background:var(--teal);color:#fffdf7;border:none;border-radius:8px;padding:13px 26px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:10px}
+button.ghost{background:transparent;color:var(--teal);border:1px solid var(--teal)}
+.res{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:22px;margin:18px 0}
+.score{font-family:'Noto Serif KR',serif;font-size:44px;font-weight:900;letter-spacing:-.02em}
+.ok{color:var(--green)}.no{color:var(--red)}
+.rev{font-size:14px;margin:10px 0;padding:10px 14px;border-radius:8px;background:#fff;border:1px solid var(--border)}
+.rev.cok{background:var(--gbg);border-color:var(--gbd)}.rev.cno{background:var(--rbg);border-color:var(--rbd)}
+.rev .ex{color:var(--dim);font-size:13.5px;margin-top:4px}
+.codebox{width:100%;background:#2b2722;border:1px solid var(--teal);border-radius:8px;color:#7fd9a8;padding:12px;font-family:'DM Mono',monospace;font-size:12.5px;margin-top:8px;word-break:break-all;min-height:60px;user-select:all;-webkit-user-select:all;white-space:pre-wrap}
+.choice{display:block;background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:8px 0;font-size:15px;color:var(--text)}
+.choice.correct{background:var(--gbg);border-color:var(--gbd);color:#1f5638;font-weight:600}
+.cbadge{font-size:11px;font-family:'DM Mono',monospace;color:#fffdf7;background:var(--green);border-radius:4px;padding:1px 7px;margin-left:8px}
+.amark{color:var(--green);font-weight:900;margin-right:6px}
+.acc{color:var(--dim);font-size:13px;margin-top:4px}
+.exp{margin-top:10px;padding-top:10px;border-top:1px dashed var(--bordstrong)}
+.exp .lab{font-family:'DM Mono',monospace;font-size:11.5px;color:var(--amber);border:1px solid var(--abd);background:var(--abg);border-radius:5px;padding:1px 7px;margin-right:8px}
+.foot{color:var(--dim2);font-size:12.5px;margin-top:36px;border-top:1px solid var(--bordstrong);padding-top:12px}
+</style></head><body><div class="wrap">
+<div class="kick">TEST · 테스트지</div>
+<h1>월말평가 1개월(누적) — W1~W4</h1>
+<p class="meta">2026-07-27 월말 · 대상: 원장·부원장 · 20문항(누적) · 자동채점 · 합격 70점</p>
+<p class="hint">먼저 「해당 주차 요약자료/세부안내」를 학습한 뒤 응시하세요. 제출하면 즉시 채점되고, 하단에 <b>결과코드</b>가 생성됩니다. 결과코드 상자를 복사해 관리자에게 제출하면 통계에 집계됩니다.</p>
+<div class="name"><label class="nm" for="nm">이름 / 소속(센터)</label><input id="nm" placeholder="예: 홍길동 / 천안센터"></div>
+<form id="quiz"></form>
+<button id="submit">제출하고 채점하기</button>
+<div id="out"></div>
+<div class="foot">교과입시팀 · 원장·부원장 입시상식 프로그램 · 본 자료는 내부 학습용. 대학별 세부·수능최저·정시 환산·일정은 어디가(adiga.kr)·각 대학 2028 모집요강 최종본으로 확인.</div>
+<script>
+const QUIZ = {"id": "M20260727_M1", "title": "월말평가 1개월(누적) — W1~W4", "questions": [{"type": "mc", "q": "현 고3·N수생과 현 고2가 각각 치르는 수능 학년도로 옳은 것은? (고2는 고3보다 1년 뒤에 응시)", "choices": ["고3·N수생 = 2027 / 고2 = 2028", "고3·N수생 = 2026 / 고2 = 2027", "고3·N수생 = 2028 / 고2 = 2029", "고3·N수생 = 2025 / 고2 = 2026"], "answer": 0, "ex": "고3·N수생=2027(현행), 그 1년 뒤 고2=2028(첫 통합형·5등급제). 모든 보기가 고2=고3+1을 지키므로 '실제 학년도'를 알아야 푼다."}, {"type": "mc", "q": "2028 개편 3대 변화가 아닌 것은?", "choices": ["통합형 수능 도입", "내신 5등급제 도입", "정시 모집 축소", "수능 절대평가 전환"], "answer": 3, "ex": "3대 변화=통합형·5등급·정시 축소. 수능 절대평가 전환 아님."}, {"type": "mc", "q": "2028 전체 수시:정시 비율로 가장 가까운 것은?", "choices": ["80.8 : 19.2", "75.0 : 25.0", "70.0 : 30.0", "85.0 : 15.0"], "answer": 0, "ex": "수시 80.8% / 정시 19.2%."}, {"type": "mc", "q": "수시 4대 전형이 아닌 것은?", "choices": ["학생부종합", "학생부교과", "논술", "정시"], "answer": 3, "ex": "정시는 수시가 아님."}, {"type": "short", "q": "수시 최대 지원 장수는? (숫자)", "accept": ["6", "6장"], "ex": "수시 6장."}, {"type": "short", "q": "정시 최대 지원 군(장) 수는? (숫자)", "accept": ["3", "3장"], "ex": "정시 가·나·다 3장."}, {"type": "mc", "q": "'3개합 6'의 의미는?", "choices": ["3개 과목 평균이 6등급 이내", "지정 영역 중 3개 등급 합 6 이내", "6개 영역 등급 합이 3 이내라는 뜻", "서로 다른 3개 대학에 동시 합격"], "answer": 1, "ex": "3개 영역 등급 합 6 이내."}, {"type": "mc", "q": "통합사회·통합과학의 과목당 문항·시간은?", "choices": ["20문항·30분", "25문항·40분", "30문항·50분", "40문항·60분"], "answer": 1, "ex": "각 25문항·40분."}, {"type": "mc", "q": "2028 수능에서 제외되는 수학은?", "choices": ["확률과 통계 영역", "미적분Ⅱ·기하", "고교 수학Ⅰ·수학Ⅱ 영역", "고교 확률과 통계 영역"], "answer": 1, "ex": "심화수학 제외."}, {"type": "mc", "q": "통합사회·통합과학 응시 방식은?", "choices": ["사회·과학 중 한 영역을 선택해 응시한다", "둘 다 응시한다", "계열(문·이과)에 따라 한쪽을 응시한다", "탐구 영역은 응시하지 않아도 된다"], "answer": 1, "ex": "둘 다 응시."}, {"type": "mc", "q": "5등급제 1등급 비율은?", "choices": ["4%", "7%", "10%", "15%"], "answer": 2, "ex": "5등급제 1등급 약 10%."}, {"type": "short", "q": "5등급제 2등급까지 누적 비율은? (%, 숫자만)", "accept": ["34", "34%"], "ex": "누적 34%."}, {"type": "mc", "q": "교과 점수의 변별 약화로 영향력이 강화될 것으로 예상되는 영역은?", "choices": ["출결·봉사 등 비교과 기록 영역", "학생부·면접·논술", "교내 봉사활동 시간과 횟수", "독서활동 기록과 동아리 활동"], "answer": 1, "ex": "학생부·면접·논술로 이동."}, {"type": "mc", "q": "학종과 교과의 핵심 차이는?", "choices": ["둘은 평가 방식이 동일하다고 본다", "정성 vs 정량", "학종이 곧 수능 평가다", "교과가 곧 면접 평가다"], "answer": 1, "ex": "정성 vs 정량."}, {"type": "mc", "q": "정시의 핵심 평가 요소는?", "choices": ["학생부", "수능", "논술", "실기"], "answer": 1, "ex": "정시는 수능 위주."}, {"type": "mc", "q": "졸업생(N수생)의 내신 체계와 평가 방향은?", "choices": ["현역과 동일한 5등급으로 비교", "9등급·같은 체계끼리 분리평가", "내신이 아예 없는 것으로 처리", "절대평가 성취도만 반영"], "answer": 1, "ex": "9등급, 분리평가 방향."}, {"type": "mc", "q": "2028이 맞물린 고교 제도는?", "choices": ["자유학기제", "고교학점제", "수준별수업", "입학사정관제"], "answer": 1, "ex": "고교학점제 연계."}, {"type": "mc", "q": "'사탐런 하면 유리한가요?'(고2)에 대한 옳은 답은?", "choices": ["과거처럼 과탐이 더 유리하다", "선택과목이 없어 해당 없다", "과거처럼 사탐이 더 유리하다", "제2외국어를 선택하면 된다"], "answer": 1, "ex": "선택과목 폐지로 유불리 없음."}, {"type": "mc", "q": "내신이 약한 학생에게 열린 정시 트랙은?", "choices": ["수능100% 대학", "지방대학의 지역인재 전형", "면접 위주의 학생부종합 전형", "수능 영향이 큰 일반 대학별 논술 전형"], "answer": 0, "ex": "수능100% 정시가 대안."}, {"type": "mc", "q": "'정시는 수능만 잘 보면 되죠?'라고 묻는 학부모에게 관리자의 1차 대응으로 가장 적절한 것은?", "choices": ["맞습니다, 정시는 수능 100%만 보니 학생부는 신경 쓰지 않으셔도 됩니다", "2028부터 상위권 다수 대학이 정시에도 학생부를 반영합니다", "정시 비중이 느니 정시 위주로만 준비하면 됩니다", "수능 등급만 맞추면 면접·서류 없이 합격합니다"], "answer": 1, "ex": "2028은 상위15개대 다수가 정시에 학생부를 반영(정시는 오히려 축소). '수능만'으로 단정하지 말고 지망 대학 기준을 함께 확인하는 것이 옳은 1차 대응."}]};
+const form=document.getElementById('quiz');
+QUIZ.questions.forEach((it,i)=>{const d=document.createElement('div');d.className='q';
+ const tag=it.type==='mc'?'객관식':'단답형';
+ let h=`<div class="qh"><span class="n">Q${i+1}</span>${it.q}<span class="badge">${tag}</span></div>`;
+ if(it.type==='mc'){it.choices.forEach((c,j)=>{h+=`<label class="opt"><input type="radio" name="q${i}" value="${j}">${c}</label>`;});}
+ else{h+=`<div class="short"><input type="text" name="q${i}" placeholder="답을 입력하세요" autocomplete="off"></div>`;}
+ d.innerHTML=h;form.appendChild(d);});
+function norm(s){return (s||'').toString().trim().toLowerCase().replace(/\s+/g,'').replace(/[.\-\/]/g,'');}
+document.getElementById('submit').onclick=()=>{
+ const name=document.getElementById('nm').value.trim()||'(이름미입력)';
+ let score=0;const flags=[];const ans=[];
+ let html=`<div class="res"><div>채점 결과 — <b>${name}</b></div>`;
+ QUIZ.questions.forEach((it,i)=>{let correct=false,given='';
+  if(it.type==='mc'){const sel=document.querySelector(`input[name="q${i}"]:checked`);given=sel?sel.value:'';correct=sel&&Number(sel.value)===it.answer;}
+  else{const v=document.querySelector(`input[name="q${i}"]`).value;given=v;correct=it.accept.some(a=>norm(a)===norm(v));}
+  if(correct)score++;flags.push(correct?1:0);ans.push(given);});
+ const pct=Math.round(score/QUIZ.questions.length*100);
+ html+=`<div class="score ${pct>=70?'ok':'no'}">${score} / ${QUIZ.questions.length} <span style="font-size:18px">(${pct}점)</span></div>`;
+ html+=`<div class="hint">${pct>=70?'합격 기준(70점) 충족':'합격 기준(70점) 미달 — 자료 재학습 권장'}</div>`;
+ QUIZ.questions.forEach((it,i)=>{const ok=flags[i]===1;
+  let yourTxt=it.type==='mc'?(ans[i]!==''?it.choices[Number(ans[i])]:'(무응답)'):(ans[i]||'(무응답)');
+  let corrTxt=it.type==='mc'?it.choices[it.answer]:it.accept[0];
+  html+=`<div class="rev ${ok?'cok':'cno'}"><b class="${ok?'ok':'no'}">${ok?'○':'✕'} Q${i+1}</b> ${it.q}<br><span class="${ok?'ok':'no'}">내 답: ${yourTxt}</span>${ok?'':` · <span class="ok">정답: ${corrTxt}</span>`}<div class="ex">${it.ex||''}</div></div>`;});
+ const payload={t:QUIZ.id,n:name,d:new Date().toISOString().slice(0,16).replace('T',' '),s:score,tot:QUIZ.questions.length,c:flags};
+ const code='ITALL1|'+btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+ html+=`<div style="margin-top:18px"><b>결과코드</b> (아래 상자를 그대로 복사해 관리자에게 제출):<div class="codebox" id="code">${code}</div><button class="ghost" id="copy">결과코드 복사</button></div></div>`;
+ const out=document.getElementById('out');out.innerHTML=html;window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+ document.getElementById('copy').onclick=()=>{const t=document.getElementById('code').textContent;navigator.clipboard&&navigator.clipboard.writeText(t);const r=document.getSelection(),g=document.createRange();g.selectNodeContents(document.getElementById('code'));r.removeAllRanges();r.addRange(g);try{document.execCommand('copy');}catch(e){}document.getElementById('copy').textContent='복사됨 ✓';};
+};
+</script></div></body></html>

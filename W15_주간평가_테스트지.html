@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>주간평가 15주차 — 수도권·인서울 대학별 변별 포인트 — 테스트지</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4eee0;--card:#fffdf7;--border:#e7dec9;--bordstrong:#e0d5bd;--ink:#231f17;--text:#3a3429;--dim:#8a7f6b;--dim2:#9a8f79;--teal:#1c6b6e;--green:#2f7d4f;--gbg:#eaf5ec;--gbd:#c3e0ca;--red:#bf3b34;--rbg:#fbeeec;--rbd:#eccac6;--amber:#b56a27;--abg:#fbf3e4;--abd:#ecdcc0}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:400;line-height:1.7;margin:0;padding:52px 20px 110px}
+.wrap{max-width:800px;margin:0 auto}
+.kick{font-family:'DM Mono',monospace;color:var(--teal);letter-spacing:2.5px;font-size:12.5px;text-transform:uppercase}
+h1{font-family:'Noto Serif KR',serif;font-size:clamp(21px,3vw,29px);font-weight:900;color:var(--ink);border-bottom:3px solid var(--teal);padding-bottom:14px;margin:6px 0 6px}
+.meta{color:var(--dim);font-family:'DM Mono',monospace;font-size:13px;margin:6px 0 4px}
+.hint{color:var(--dim);font-size:13.5px;margin:8px 0}
+.name{margin:18px 0}
+label.nm{display:block;font-size:14px;color:var(--dim);margin-bottom:6px}
+.name input{width:100%;max-width:360px;background:var(--card);border:1px solid var(--bordstrong);border-radius:8px;color:var(--ink);padding:11px 14px;font-size:15px;font-family:inherit}
+.q{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin:16px 0}
+.qh{font-weight:700;color:var(--ink);font-size:15.5px;margin-bottom:8px}
+.qh .n{font-family:'Noto Serif KR',serif;font-weight:900;color:var(--teal);margin-right:8px}
+.badge{font-size:11.5px;font-family:'DM Mono',monospace;color:var(--dim);border:1px solid var(--border);border-radius:5px;padding:1px 7px;margin-left:8px}
+.opt{display:block;background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:8px 0;cursor:pointer;font-size:15px;transition:.12s;color:var(--text)}
+.opt:hover{border-color:var(--teal)}
+.opt input{margin-right:10px;accent-color:var(--teal)}
+.short input{width:100%;background:#fff;border:1px solid var(--bordstrong);border-radius:8px;color:var(--ink);padding:10px 14px;font-size:15px;font-family:inherit}
+button{background:var(--teal);color:#fffdf7;border:none;border-radius:8px;padding:13px 26px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:10px}
+button.ghost{background:transparent;color:var(--teal);border:1px solid var(--teal)}
+.res{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:22px;margin:18px 0}
+.score{font-family:'Noto Serif KR',serif;font-size:44px;font-weight:900;letter-spacing:-.02em}
+.ok{color:var(--green)}.no{color:var(--red)}
+.rev{font-size:14px;margin:10px 0;padding:10px 14px;border-radius:8px;background:#fff;border:1px solid var(--border)}
+.rev.cok{background:var(--gbg);border-color:var(--gbd)}.rev.cno{background:var(--rbg);border-color:var(--rbd)}
+.rev .ex{color:var(--dim);font-size:13.5px;margin-top:4px}
+.codebox{width:100%;background:#2b2722;border:1px solid var(--teal);border-radius:8px;color:#7fd9a8;padding:12px;font-family:'DM Mono',monospace;font-size:12.5px;margin-top:8px;word-break:break-all;min-height:60px;user-select:all;-webkit-user-select:all;white-space:pre-wrap}
+.choice{display:block;background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:8px 0;font-size:15px;color:var(--text)}
+.choice.correct{background:var(--gbg);border-color:var(--gbd);color:#1f5638;font-weight:600}
+.cbadge{font-size:11px;font-family:'DM Mono',monospace;color:#fffdf7;background:var(--green);border-radius:4px;padding:1px 7px;margin-left:8px}
+.amark{color:var(--green);font-weight:900;margin-right:6px}
+.acc{color:var(--dim);font-size:13px;margin-top:4px}
+.exp{margin-top:10px;padding-top:10px;border-top:1px dashed var(--bordstrong)}
+.exp .lab{font-family:'DM Mono',monospace;font-size:11.5px;color:var(--amber);border:1px solid var(--abd);background:var(--abg);border-radius:5px;padding:1px 7px;margin-right:8px}
+.foot{color:var(--dim2);font-size:12.5px;margin-top:36px;border-top:1px solid var(--bordstrong);padding-top:12px}
+</style></head><body><div class="wrap">
+<div class="kick">TEST · 테스트지</div>
+<h1>주간평가 15주차 — 수도권·인서울 대학별 변별 포인트</h1>
+<p class="meta">2026-10-05 주차 · 대상: 원장·부원장 · 난이도 ★★★★ 심화(변별형) · 20문항 · 자동채점 · 합격 70점</p>
+<p class="hint">먼저 「해당 주차 요약자료/세부안내」를 학습한 뒤 응시하세요. 제출하면 즉시 채점되고, 하단에 <b>결과코드</b>가 생성됩니다. 결과코드 상자를 복사해 관리자에게 제출하면 통계에 집계됩니다. 채점 후 <b>틀린 문제는 전부 맞힐 때까지 반복</b>해서 풀 수 있습니다.</p>
+<div class="name"><label class="nm" for="nm">이름 / 소속(센터)</label><input id="nm" placeholder="예: 홍길동 / 천안센터"></div>
+<form id="quiz"></form>
+<button id="submit">제출하고 채점하기</button>
+<div id="out"></div>
+<div class="foot">교과입시팀 · 원장·부원장 입시상식 프로그램 · 본 자료는 내부 학습용. 대학별 세부·수능최저·정시 환산·일정은 어디가(adiga.kr)·각 대학 2028 모집요강 최종본으로 확인.</div>
+<script>
+const QUIZ = {"id": "W20261005_W15", "title": "주간평가 15주차 — 수도권·인서울 변별", "questions": [{"type": "mc", "q": "다음 중 '정시에 학생부를 반영'한 대학은?", "choices": ["서강대", "국민대", "숭실대", "서울대"], "answer": 3, "ex": "서울대는 정시 학생부 반영. 서강·국민·숭실은 수능100 활용. [마스터비교157]"}, {"type": "mc", "q": "다음 중 '정시 수능100% 방식을 활용'하는 대학은?", "choices": ["서울대", "연세대(신촌)", "한국외대", "중앙대"], "answer": 2, "ex": "한국외대는 정시 수능100 활용. 서울대·연세대(신촌)·중앙대는 학생부 반영. [마스터비교157]"}, {"type": "mc", "q": "다음 중 정시 성향이 '일부 전형만 수능100'인 대학은?", "choices": ["서강대", "국민대", "성균관대", "경희대"], "answer": 3, "ex": "경희대는 '일부' 유형. 서강·국민·성대는 수능100 활용. [마스터비교157]"}, {"type": "mc", "q": "다음 중 검정고시 유불리가 '중상(상대적 접근 양호)'으로 분류된 대학은?", "choices": ["서울대학교", "가톨릭대", "중앙대", "동국대"], "answer": 1, "ex": "가톨릭대는 검정 '중상'(수능100 활용군). 서울대·중앙대·동국대는 '중'. [마스터비교157]"}, {"type": "mc", "q": "다음 중 권역 분류가 '경기·인천'인 대학은?", "choices": ["숭실대", "광운대", "세종대", "가천대"], "answer": 3, "ex": "가천대는 경기·인천. 숭실·광운·세종은 인서울. [마스터비교157]"}, {"type": "mc", "q": "다음 중 '정시 학생부 반영' 대학이 아닌 곳은?", "choices": ["서울대", "한양대(서울)", "서강대", "중앙대"], "answer": 2, "ex": "서강대는 수능100 활용. 서울대·한양대(서울)·중앙대는 학생부 반영. [마스터비교157]"}, {"type": "mc", "q": "다음 중 정시 수능100%를 활용하는 대학은?", "choices": ["서강대", "고려대", "경희대", "서울시립대"], "answer": 0, "ex": "서강대는 수능100 활용. 고려·경희·시립은 '일부'. [마스터비교157]"}, {"type": "mc", "q": "다음 중 검정고시 유불리가 '중상'이 아닌(= '중') 대학은?", "choices": ["한국외대", "국민대", "숭실대", "중앙대"], "answer": 3, "ex": "중앙대는 '중'. 한국외·국민·숭실은 '중상'. [마스터비교157]"}, {"type": "mc", "q": "다음 중 권역이 '경기·인천'이 아닌(= 인서울) 대학은?", "choices": ["인하대", "아주대", "광운대", "가천대"], "answer": 2, "ex": "광운대는 인서울. 인하·아주·가천은 경기·인천. [마스터비교157]"}, {"type": "mc", "q": "다음 중 '정시 학생부 반영' 대학은?", "choices": ["성균관대", "동국대", "한국외대", "가톨릭대"], "answer": 1, "ex": "동국대는 학생부 반영. 성대·한국외·가톨릭대는 수능100 활용. [마스터비교157]"}, {"type": "mc", "q": "다음 여대 중 '정시 수능100% 활용'인 곳은?", "choices": ["성신여대", "숙명여대", "이화여대", "덕성여대"], "answer": 0, "ex": "성신여대는 수능100 활용. 숙명=학생부 반영, 이화·덕성='일부'. [마스터비교157]"}, {"type": "mc", "q": "다음 여대 중 '정시에 학생부를 반영'한 곳은?", "choices": ["성신여대", "동덕여대", "숙명여대", "서울여대"], "answer": 2, "ex": "숙명여대는 학생부 반영. 성신·동덕·서울여대는 수능100 활용. [마스터비교157]"}, {"type": "mc", "q": "수도권 주요대의 N수(졸업생) 지원에 대한 설명으로 옳은 것은?", "choices": ["대부분 대학이 N수 지원을 받지 않는다", "거의 전 대학이 N수 지원 가능하다", "재수생만 지원이 불가능하다", "삼수 이상은 일괄 불가하다"], "answer": 1, "ex": "수도권 주요대는 거의 전 대학 N수 가능(일부 교과·추천만 조건). [마스터비교157]"}, {"type": "mc", "q": "다음 중 검정고시 유불리가 '중하'(상대적으로 더 불리)로 분류된 대학은?", "choices": ["한국항공대", "가천대학교", "인하대", "아주대"], "answer": 0, "ex": "한국항공대는 검정 '중하'. 가천·인하·아주는 '중'. [마스터비교157]"}, {"type": "mc", "q": "다음 중 정시 수능100% 활용하는 대학은?", "choices": ["세종대", "광운대", "서울과기대", "홍익대(서울)"], "answer": 2, "ex": "서울과기대는 수능100 활용. 세종·광운·홍익(서울)은 '일부'. [마스터비교157]"}, {"type": "mc", "q": "정시 성향 '수능100 활용'의 의미로 옳은 것은?", "choices": ["모든 정시 전형이 수능100이라서 어떤 경우에도 학생부를 절대 보지 않는다", "정시에 수능100 전형이 있다는 뜻(다른 전형은 학생부 반영 가능)", "수시까지 전부 수능100으로 뽑는다", "정시 모집을 아예 하지 않는다"], "answer": 1, "ex": "'Y'는 수능100 전형 존재를 뜻하며 학생부 반영 전형과 병존 가능. [W15 분류 원칙]"}, {"type": "mc", "q": "다음 중 '경기·인천' 소재 대학끼리 묶인 것은?", "choices": ["가천대·인하대·아주대", "국민대·숭실대·세종대", "서강대·성균관대·한국외대", "광운대·홍익대·명지대"], "answer": 0, "ex": "가천·인하·아주는 경기·인천. 나머지 묶음은 인서울. [마스터비교157]"}, {"type": "mc", "q": "다음 중 '정시 학생부 반영' 대학끼리 묶인 것은?", "choices": ["서울대·연세대(신촌)·중앙대", "서강대·성균관대·국민대", "가톨릭대·서울과기대·삼육대학교", "가천대·인하대·아주대"], "answer": 0, "ex": "서울대·연세대(신촌)·중앙대는 학생부 반영. 나머지는 수능100 활용. [마스터비교157]"}, {"type": "mc", "q": "다음 중 검정고시 '중상' 대학끼리 묶인 것은?", "choices": ["서강대·한국외대·국민대", "서울대·연세대·고려대학교", "중앙대·경희대·동국대", "건국대·세종대·광운대"], "answer": 0, "ex": "서강·한국외·국민은 검정 '중상'. 나머지 묶음은 '중'. [마스터비교157]"}, {"type": "mc", "q": "수도권 정시 성향 분류는 무엇을 근거로 최종 확인해야 하는가?", "choices": ["아무 근거 없이 임의로 추정해 정한다", "각 대학 시행계획·모집요강 최종본", "합격 후기 게시판", "학원 홍보 자료"], "answer": 1, "ex": "본 분류는 마스터비교 기준이며, 최종은 시행계획·모집요강으로 확인. [W15 면책]"}]};
+const form=document.getElementById('quiz');
+function norm(s){return (s||'').toString().trim().toLowerCase().replace(/\s+/g,'').replace(/[.\-\/]/g,'');}
+function qInner(it,i,pfx){const tag=it.type==='mc'?'객관식':'단답형';
+ let h=`<div class="qh"><span class="n">Q${i+1}</span>${it.q}<span class="badge">${tag}</span></div>`;
+ if(it.type==='mc'){it.choices.forEach((c,j)=>{h+=`<label class="opt"><input type="radio" name="${pfx}${i}" value="${j}">${c}</label>`;});}
+ else{h+=`<div class="short"><input type="text" name="${pfx}${i}" placeholder="답을 입력하세요" autocomplete="off"></div>`;}
+ return h;}
+function judge(it,i,pfx){if(it.type==='mc'){const sel=document.querySelector(`input[name="${pfx}${i}"]:checked`);return{given:sel?sel.value:'',correct:!!sel&&Number(sel.value)===it.answer};}
+ const v=document.querySelector(`input[name="${pfx}${i}"]`).value;return{given:v,correct:it.accept.some(a=>norm(a)===norm(v))};}
+QUIZ.questions.forEach((it,i)=>{const d=document.createElement('div');d.className='q';d.innerHTML=qInner(it,i,'q');form.appendChild(d);});
+function renderPractice(remaining){
+ const p=document.getElementById('practice');
+ let h=`<div class="res"><div><b>틀린 문제만 다시 풀기</b> — 남은 <b class="no">${remaining.length}</b>문항</div><div class="hint">모두 맞힐 때까지 반복됩니다. 정답이 헷갈리면 「해설서」를 참고하세요. (첫 제출 결과코드·점수는 그대로입니다.)</div>`;
+ remaining.forEach(i=>{h+=`<div class="q">${qInner(QUIZ.questions[i],i,'r')}</div>`;});
+ h+=`<button id="recheck">다시 채점</button><div id="pout"></div></div>`;
+ p.innerHTML=h;window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+ document.getElementById('recheck').onclick=()=>{const still=[];let rev='';
+  remaining.forEach(i=>{const it=QUIZ.questions[i];const r=judge(it,i,'r');
+   if(r.correct){rev+=`<div class="rev cok"><b class="ok">○ Q${i+1}</b> 정답!</div>`;}
+   else{still.push(i);rev+=`<div class="rev cno"><b class="no">✕ Q${i+1}</b> 아직 정답이 아닙니다 — 다시 풀어보세요</div>`;}});
+  if(still.length===0){document.getElementById('pout').innerHTML=rev+`<div class="hint" style="color:var(--green);font-weight:700;margin-top:8px">🎉 모든 문제를 맞혔습니다! 반복 학습 완료.</div>`;window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});}
+  else{renderPractice(still);}
+ };}
+document.getElementById('submit').onclick=()=>{
+ const name=document.getElementById('nm').value.trim()||'(이름미입력)';
+ let score=0;const flags=[];const ans=[];
+ let html=`<div class="res"><div>채점 결과 — <b>${name}</b></div>`;
+ QUIZ.questions.forEach((it,i)=>{const r=judge(it,i,'q');if(r.correct)score++;flags.push(r.correct?1:0);ans.push(r.given);});
+ const pct=Math.round(score/QUIZ.questions.length*100);
+ html+=`<div class="score ${pct>=70?'ok':'no'}">${score} / ${QUIZ.questions.length} <span style="font-size:18px">(${pct}점)</span></div>`;
+ html+=`<div class="hint">${pct>=70?'합격 기준(70점) 충족':'합격 기준(70점) 미달 — 자료 재학습 권장'}</div>`;
+ QUIZ.questions.forEach((it,i)=>{const ok=flags[i]===1;
+  let yourTxt=it.type==='mc'?(ans[i]!==''?it.choices[Number(ans[i])]:'(무응답)'):(ans[i]||'(무응답)');
+  let corrTxt=it.type==='mc'?it.choices[it.answer]:it.accept[0];
+  html+=`<div class="rev ${ok?'cok':'cno'}"><b class="${ok?'ok':'no'}">${ok?'○':'✕'} Q${i+1}</b> ${it.q}<br><span class="${ok?'ok':'no'}">내 답: ${yourTxt}</span>${ok?'':` · <span class="ok">정답: ${corrTxt}</span>`}<div class="ex">${it.ex||''}</div></div>`;});
+ const payload={t:QUIZ.id,n:name,d:new Date().toISOString().slice(0,16).replace('T',' '),s:score,tot:QUIZ.questions.length,c:flags};
+ const code='ITALL1|'+btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+ html+=`<div style="margin-top:18px"><b>결과코드</b> (아래 상자를 그대로 복사해 관리자에게 제출):<div class="codebox" id="code">${code}</div><button class="ghost" id="copy">결과코드 복사</button></div>`;
+ const wrong=[];flags.forEach((f,i)=>{if(f===0)wrong.push(i);});
+ if(wrong.length){html+=`<div style="margin-top:18px;border-top:1px dashed var(--bordstrong);padding-top:14px"><b>반복 학습</b> — 틀린 ${wrong.length}문항을 전부 맞힐 때까지 다시 풀 수 있습니다.<br><button class="ghost" id="retry" style="margin-top:8px">틀린 문제만 다시 풀기 (${wrong.length}문항)</button></div>`;}
+ else{html+=`<div class="hint" style="color:var(--green);font-weight:700;margin-top:14px">🎉 전 문항 정답입니다. 반복 학습이 필요 없습니다.</div>`;}
+ html+=`</div><div id="practice"></div>`;
+ const out=document.getElementById('out');out.innerHTML=html;window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+ document.getElementById('copy').onclick=()=>{const t=document.getElementById('code').textContent;navigator.clipboard&&navigator.clipboard.writeText(t);const r=document.getSelection(),g=document.createRange();g.selectNodeContents(document.getElementById('code'));r.removeAllRanges();r.addRange(g);try{document.execCommand('copy');}catch(e){}document.getElementById('copy').textContent='복사됨 ✓';};
+ if(wrong.length){document.getElementById('retry').onclick=()=>renderPractice(wrong.slice());}
+};
+</script></div></body></html>

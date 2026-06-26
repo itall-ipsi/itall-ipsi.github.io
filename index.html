@@ -1,0 +1,344 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>잇올 원장·부원장 입시상식 — 커리큘럼 허브</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4eee0;--card:#fffdf7;--surface2:#fbf6ea;--border:#e7dec9;--bordstrong:#e0d5bd;--ink:#231f17;--text:#3a3429;--dim:#8a7f6b;--dim2:#9a8f79;--teal:#1c6b6e;--green:#2f7d4f;--amber:#b56a27;--red:#bf3b34;--purple:#7a5ea8}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;margin:0;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:46px 20px 90px}
+.kick{font-family:'DM Mono',monospace;color:var(--teal);letter-spacing:2.5px;font-size:12.5px;text-transform:uppercase}
+h1{font-family:'Noto Serif KR',serif;font-size:clamp(22px,3.2vw,30px);font-weight:900;color:var(--ink);border-bottom:3px solid var(--teal);padding-bottom:14px;margin:6px 0 6px}
+.meta{color:var(--dim);font-family:'DM Mono',monospace;font-size:12.5px;margin:6px 0 2px}
+.mhead{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
+.mhead .mt{font-family:'Noto Serif KR',serif;font-weight:700;color:var(--ink);font-size:17px}
+.mhead .ml{font-family:'DM Mono',monospace;font-size:12px;color:var(--dim)}
+.mhead:before{content:"";width:7px;height:20px;background:var(--teal);border-radius:2px;display:inline-block}
+.rowcol{display:flex;flex-direction:column;gap:8px}
+.row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 16px;cursor:pointer;transition:.12s;display:flex;align-items:center;gap:14px}
+.row:hover{border-color:var(--teal);transform:translateX(2px)}
+.row.mo{background:#f3eef7;border-color:#ddd2ea;border-left:4px solid var(--purple)}
+.row.mo:hover{border-color:var(--purple)}
+.chip{font-family:'DM Mono',monospace;font-weight:600;color:#fffdf7;background:var(--teal);border-radius:7px;padding:5px 10px;font-size:13px;min-width:46px;text-align:center}
+.chip.m{background:var(--purple)}
+.tt{flex:1;min-width:0}
+.tt .nm{font-weight:700;color:var(--ink);font-size:15px}
+.tt .nm .role{color:var(--teal);font-weight:700}
+.tt .nm .role.mo{color:var(--purple)}
+.tt .sub{font-size:12.5px;color:var(--dim);margin-top:2px}
+.rmeta{font-family:'DM Mono',monospace;font-size:12px;color:var(--dim);text-align:right;white-space:nowrap}
+.rmeta .lv{color:var(--amber);letter-spacing:1px}
+.go{color:var(--teal);font-size:18px;font-family:'DM Mono',monospace}
+.extra{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.xbtn{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 13px;font-size:13px;color:var(--text);cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:7px}
+.xbtn:hover{border-color:var(--purple);color:var(--purple)}
+.foot{color:var(--dim2);font-size:12px;margin-top:36px;border-top:1px solid var(--bordstrong);padding-top:12px}
+#viewer{position:fixed;inset:0;display:none;flex-direction:column;background:#e4dac6;z-index:50}
+#viewer.on{display:flex}
+.vhead{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--ink);border-bottom:1px solid #000}
+.vhead .chip{cursor:default}
+.vhead .vt{font-family:'Noto Serif KR',serif;font-weight:700;color:#fff;font-size:16px}
+.vhead .vd{font-family:'DM Mono',monospace;font-size:12px;color:#cdbfa6;margin-left:auto}
+.panes{flex:1;display:grid;gap:9px;padding:9px;min-height:0}
+.panes.weekly{grid-template-columns:minmax(0,1fr) minmax(0,1.12fr) 106px}
+.panes.monthly{grid-template-columns:minmax(0,.72fr) minmax(0,1.3fr) 106px}
+.leftcol{display:flex;flex-direction:column;gap:9px;min-height:0}
+.pane{background:#fff;border:1px solid var(--bordstrong);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-height:0}
+.pane .ph{font-size:12.5px;font-family:'DM Mono',monospace;padding:7px 11px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px;font-weight:500}
+.ph .nmtxt{font-weight:700}
+.ph .fn{color:var(--dim);font-weight:400}
+.ph .phbtn{margin-left:auto;font-family:inherit;font-size:11.5px;border:1px solid currentColor;background:transparent;color:inherit;border-radius:6px;padding:2px 8px;cursor:pointer;opacity:.85}
+.ph .phbtn:hover{opacity:1}
+.ph.sum{background:#e4efee;color:#155a5d;border-bottom-color:#cce0de}
+.ph.det{background:#f9f0e1;color:#9a571f;border-bottom-color:#ecdcc0}
+.ph.test{background:#e8f4ea;color:#236b41;border-bottom-color:#c3e0ca}
+.ph.sol{background:#fbeeec;color:#9a342e;border-bottom-color:#eccac6}
+.ph.info{background:#f1ecf6;color:#5a4485;border-bottom-color:#ddd2ea}
+.pane iframe{flex:1;width:100%;border:0;background:#fff}
+.lt{flex:1}.lb{flex:1.2}
+.leftcol.exp-sum .lt{flex:1}.leftcol.exp-sum .lb{flex:0 0 38px}.leftcol.exp-sum .lb iframe{display:none}
+.leftcol.exp-det .lb{flex:1}.leftcol.exp-det .lt{flex:0 0 38px}.leftcol.exp-det .lt iframe{display:none}
+.testwrap{position:relative}
+.testfallback{position:absolute;top:8px;right:8px;font-family:'DM Mono',monospace;font-size:11px;background:#fff;border:1px solid var(--bordstrong);border-radius:6px;padding:4px 8px;color:var(--teal);text-decoration:none}
+.gotest{background:var(--teal);color:#fffdf7;border:none;border-radius:8px;padding:11px 16px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:14px;width:100%}
+.gotest:hover{background:#17585b}
+.rail{display:flex;flex-direction:column;gap:8px;align-items:stretch;background:var(--ink);border-radius:10px;padding:9px 7px}
+.rbtn{min-height:40px;border:1px solid #4a4339;background:#2c271e;border-radius:9px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;color:#e9dcc4;font-size:11px;font-family:'DM Mono',monospace;line-height:1.25;padding:6px 5px;white-space:normal;word-break:keep-all}
+.rbtn:hover{border-color:var(--teal);color:#fff}
+.rbtn.act{background:var(--teal);color:#fff;border-color:#7fd9a8;box-shadow:0 0 0 2px rgba(127,217,168,.25)}
+#ov{position:fixed;inset:0;background:rgba(35,31,23,.55);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
+#ov.on{display:flex}
+.ovcard{background:var(--card);border:1px solid var(--bordstrong);border-radius:14px;max-width:460px;width:100%;padding:22px}
+.ovcard h3{font-family:'Noto Serif KR',serif;margin:0 0 4px;color:var(--ink)}
+.ovcard p{font-size:13.5px;color:var(--text);margin:0 0 10px}
+.ovlink{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--border);border-radius:9px;margin:8px 0;cursor:pointer;color:var(--text);text-decoration:none}
+.ovlink:hover{border-color:var(--teal);color:var(--teal)}
+.ovlink .i{font-size:16px;color:var(--teal)}
+.ovclose{margin-top:8px;width:100%;background:var(--teal);color:#fffdf7;border:0;border-radius:9px;padding:11px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer}
+.mlist{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.mlink{font-size:12px;font-family:'DM Mono',monospace;background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:6px 10px;cursor:pointer;color:var(--teal)}
+.mlink:hover{border-color:var(--teal);background:#eef6f5}
+.note{font-size:13.5px;color:var(--text);padding:14px;line-height:1.75}
+@media(max-width:860px){
+ .panes.weekly,.panes.monthly{grid-template-columns:1fr;grid-auto-rows:minmax(74vh,auto)}
+ .rail{flex-direction:row;flex-wrap:wrap;justify-content:center;order:-1}
+ .rbtn{min-width:104px}
+}
+</style></head><body>
+
+<div class="wrap" id="home">
+  <div class="kick">ITALL · 원장·부원장 입시상식</div>
+  <h1>커리큘럼 허브</h1>
+  <p class="meta">회차를 누르면 요약·상세·테스트가 한 화면에 열립니다 · 시작 2026-06-29 · 매주 1회 · 4주마다 종합평가</p>
+  <div id="sections"></div>
+  <div class="mhead"><span class="mt">참고 자료</span></div>
+  <div class="extra" id="extra"></div>
+  <div class="foot">교과입시팀 · 콘텐츠(요약·상세·해설)는 흰 배경 버전을, 테스트는 구글 채점 시스템을 불러옵니다. 테스트 응시에는 구글 로그인이 필요합니다.</div>
+</div>
+
+<div id="viewer">
+  <div class="vhead">
+    <span class="chip" id="vchip">W1</span>
+    <span class="vt" id="vtitle">제목</span>
+    <span class="vd" id="vdate"></span>
+  </div>
+  <div class="panes weekly" id="panes"></div>
+</div>
+
+<div id="ov"><div class="ovcard" id="ovcard"></div></div>
+
+<script>
+var GAS = "https://script.google.com/macros/s/AKfycbxIdlyIBG-7sWJOWe06S4HC32GZQ_Kzu_apfyBw-6460Mmb5aVdqXGX_URQ0mD3F8iFbg/exec";
+var WHITE = "white/";
+
+var WEEKS = [
+ {k:"W1",t:"2028 개편·세대 구분",d:"06-29",lv:"★",qid:"W20260629_W1"},
+ {k:"W2",t:"전형의 종류와 구조",d:"07-06",lv:"★",qid:"W20260706_W2"},
+ {k:"W3",t:"통합형 수능 상세",d:"07-13",lv:"★",qid:"W20260713_W3"},
+ {k:"W4",t:"내신 5등급제",d:"07-20",lv:"★",qid:"W20260720_W4"},
+ {k:"W5",t:"정시의 학생부화",d:"07-27",lv:"★★",qid:"W20260727_W5"},
+ {k:"W6",t:"수도권 주요대 전형 심화",d:"08-03",lv:"★★",qid:"W20260803_W6"},
+ {k:"W7",t:"의대 전형 구조",d:"08-10",lv:"★★",qid:"W20260810_W7"},
+ {k:"W8",t:"약·치·수의대 + 검정고시",d:"08-17",lv:"★★",qid:"W20260817_W8"},
+ {k:"W9",t:"정시 환산점수",d:"08-24",lv:"★★★",qid:"W20260824_W9"},
+ {k:"W10",t:"수능최저 읽는 법",d:"08-31",lv:"★★★",qid:"W20260831_W10"},
+ {k:"W11",t:"학종 평가요소",d:"09-07",lv:"★★★",qid:"W20260907_W11"},
+ {k:"W12",t:"재도전 졸업생 전략",d:"09-14",lv:"★★★",qid:"W20260914_W12"},
+ {k:"W13",t:"심화 케이스형",d:"09-21",lv:"★★★★",qid:"W20260921_W13"},
+ {k:"W14",t:"메디컬 대학별 변별",d:"09-28",lv:"★★★★",qid:"W20260928_W14"},
+ {k:"W15",t:"수도권·인서울 변별",d:"10-05",lv:"★★★★",qid:"W20261005_W15"},
+ {k:"W16",t:"지방거점·특수목적대 변별",d:"10-12",lv:"★★★★",qid:"W20261012_W16"},
+ {k:"W17",t:"검정고시·재도전 변별",d:"10-19",lv:"★★★★",qid:"W20261019_W17"}
+];
+var MONTHS = [
+ {k:"M1",d:"07-20",rng:"W1~W4",incl:[1,2,3,4],qid:"M20260727_M1"},
+ {k:"M2",d:"08-17",rng:"W5~W8",incl:[5,6,7,8],qid:"M20260817_M2"},
+ {k:"M3",d:"09-14",rng:"W9~W12",incl:[9,10,11,12],qid:"M20260914_M3"}
+];
+var SECTIONS = [
+ {t:"1개월차",sub:"W1–W4 · 기초",ws:[0,1,2,3],m:0,ml:"1~4주 종합평가"},
+ {t:"2개월차",sub:"W5–W8 · 중급",ws:[4,5,6,7],m:1,ml:"5~8주 종합평가"},
+ {t:"3개월차",sub:"W9–W12 · 상급",ws:[8,9,10,11],m:2,ml:"9~12주 종합평가"},
+ {t:"4개월차~",sub:"W13–W17 · 심화(월말 없음)",ws:[12,13,14,15,16],m:null,ml:null}
+];
+var EXTRA = [
+ {n:"부록 · 정시 수능100/저학생부/검정고시 길",f:"부록_정시수능100_저학생부_검정고시길.html"},
+ {n:"전체 커리큘럼 · 종합안내",f:"00_전체커리큘럼_종합안내.html"},
+ {n:"12주 로드맵",f:"00_로드맵_12주_커리큘럼.html"},
+ {n:"상위15개대 2028 시행계획 브리핑",f:"부록_상위15개대_2028시행계획.html"}
+];
+
+function byId(x){return document.getElementById(x);}
+function enc(f){return encodeURI(f);}
+function testUrl(qid){return GAS+"?quiz="+encodeURIComponent(qid);}
+var CUR=null, stage="test", monthSubmitted=false;
+var QS=new URLSearchParams(location.search);
+var UPTO=parseInt(QS.get("upto"),10); if(!UPTO||isNaN(UPTO)||UPTO<1) UPTO=99;
+
+(function(){
+ var host=byId("sections");
+ if(UPTO<99){
+  var mtxt=UPTO>=12?" + 월말 M1·M2·M3":(UPTO>=8?" + 월말 M1·M2":(UPTO>=4?" + 월말 M1":""));
+  var b=document.createElement("div");
+  b.style.cssText="background:#eef6f5;border:1px solid #cfe6e3;border-left:4px solid var(--teal);border-radius:9px;padding:11px 15px;margin:0 0 12px;font-size:13.5px;color:#1c4f51";
+  b.innerHTML='이번 공개 범위 · <b>1~'+UPTO+'주차'+mtxt+'</b><br><span style="color:var(--dim);font-size:12px">관리자가 매주 링크를 바꿔 단계적으로 공개합니다.</span>';
+  host.appendChild(b);
+ }
+ SECTIONS.forEach(function(sec){
+  var vis=sec.ws.filter(function(idx){return (idx+1)<=UPTO;});
+  var monEnd=(sec.m!==null)?MONTHS[sec.m].incl[MONTHS[sec.m].incl.length-1]:0;
+  var showMon=(sec.m!==null)&&(UPTO>=monEnd);
+  if(vis.length===0 && !showMon) return;
+  var head=document.createElement("div");head.className="mhead";
+  head.innerHTML='<span class="mt">'+sec.t+'</span><span class="ml">'+sec.sub+'</span>';
+  host.appendChild(head);
+  var col=document.createElement("div");col.className="rowcol";
+  vis.forEach(function(idx){
+   var w=WEEKS[idx]; var wn=idx+1;
+   var r=document.createElement("div");r.className="row";
+   r.innerHTML='<span class="chip">'+w.k+'</span>'+
+     '<div class="tt"><div class="nm"><span class="role">'+wn+'주차 자료</span> · '+w.t+'</div><div class="sub">요약 · 상세 · 테스트</div></div>'+
+     '<div class="rmeta">'+w.d+'<br><span class="lv">'+w.lv+'</span></div><span class="go">›</span>';
+   r.onclick=function(){openWeek(w);};col.appendChild(r);
+  });
+  if(showMon){
+   var m=MONTHS[sec.m];
+   var r=document.createElement("div");r.className="row mo";
+   r.innerHTML='<span class="chip m">'+m.k+'</span>'+
+     '<div class="tt"><div class="nm"><span class="role mo">'+sec.ml+'</span> · 별도 페이지</div><div class="sub">'+m.rng+' 누적 평가 · 새 창에서 응시</div></div>'+
+     '<div class="rmeta">'+m.d+'<br>월말 ↗</div><span class="go">›</span>';
+   r.onclick=function(){window.open("month.html?m="+m.k+"&upto="+UPTO,"_blank");};col.appendChild(r);
+  }
+  host.appendChild(col);
+ });
+ var ex=byId("extra");
+ EXTRA.forEach(function(e){
+  var b=document.createElement("div");b.className="xbtn";b.innerHTML='<span>▣</span>'+e.n;
+  b.onclick=function(){window.open(enc(e.f),"_blank");};ex.appendChild(b);
+ });
+})();
+
+function railBtn(label,title,onclick,id){
+ return '<div class="rbtn" title="'+title+'" onclick="'+onclick+'"'+(id?(' id="'+id+'"'):'')+'>'+label+'</div>';
+}
+function rail(showSol){
+ var h='';
+ h+=railBtn("메인화면 가기","목록(메인)으로","closeView()");
+ if(showSol) h+=railBtn("해설","해설 보기/숨기기","toggleSol()","solBtn");
+ h+=railBtn("정보","참고자료 보기/숨기기","toggleInfo()","infoBtn");
+ h+=railBtn("전체화면","전체화면 토글","toggleFull()","fullBtn");
+ h+=railBtn("새 탭 시험","테스트를 새 탭에서 열기","openTestTab()");
+ return '<div class="rail">'+h+'</div>';
+}
+function whiten(frame){
+ if(!frame) return;
+ frame.addEventListener("load",function(){
+  try{ var d=frame.contentDocument; if(d){ d.documentElement.style.background="#fff"; if(d.body) d.body.style.background="#fff"; } }catch(e){}
+ });
+}
+/* 오른쪽 '스테이지' 패널 HTML (테스트·해설·정보·요약을 같은 자리에서 교체) */
+function stagePane(qid){
+ return '<div class="pane test testwrap" id="stwrap"><div class="ph test" id="stph"><span class="nmtxt" id="stlabel">테스트</span> <span class="fn" id="stfn">서버 채점</span><button class="phbtn" id="stback" style="display:none" onclick="backToTest()">← 테스트로</button></div><iframe id="stframe" src="'+testUrl(qid)+'"></iframe><a class="testfallback" id="stfall" href="'+testUrl(qid)+'" target="_blank">새 탭 ↗</a></div>';
+}
+function setStage(kind,src,label,fn,phcls,doWhiten){
+ var fr=byId("stframe"); if(!fr) return;
+ fr.src=src; if(doWhiten) whiten(fr);
+ byId("stlabel").textContent=label; byId("stfn").textContent=fn;
+ byId("stph").className="ph "+phcls;
+ byId("stback").style.display=(kind==="test")?"none":"";
+ var f=byId("stfall"); if(f){ if(kind==="test"){ f.style.display=""; f.href=testUrl(CUR.o.qid);} else f.style.display="none"; }
+ stage=kind; updateStageBtns();
+}
+function backToTest(){ if(!CUR) return; setStage("test",testUrl(CUR.o.qid),"테스트","서버 채점","test",false); }
+function showSol(){ if(!CUR) return; var key=CUR.o.k+(CUR.type==="week"?"_주간평가_해설서.html":"_월말평가_해설서.html"); setStage("sol",enc(WHITE+key),"해설서",CUR.o.k+"_해설","sol",true); }
+function showSummary(i){ setStage("summary",enc(WHITE+"W"+i+"_요약자료.html"),"W"+i+" 요약","요약자료","sum",true); }
+function showInfo(file,name){ setStage("info",enc(file),name,"참고자료","info",true); }
+function updateStageBtns(){
+ var s=byId("solBtn"), inf=byId("infoBtn");
+ if(s){ s.textContent=(stage==="sol")?"평가로 돌아가기":"해설"; s.classList.toggle("act",stage==="sol"); }
+ if(inf){ inf.textContent=(stage==="info")?"돌아가기":"정보"; inf.classList.toggle("act",stage==="info"); }
+}
+
+function openWeek(w){
+ CUR={type:"week",o:w}; stage="test";
+ byId("vchip").textContent=w.k; byId("vchip").className="chip";
+ byId("vtitle").textContent=w.t; byId("vdate").textContent=w.d+" · "+w.lv;
+ var p=byId("panes"); p.className="panes weekly";
+ p.innerHTML=
+  '<div class="leftcol" id="leftcol">'+
+   '<div class="pane lt"><div class="ph sum"><span class="nmtxt">요약</span> <span class="fn">'+w.k+'_요약자료</span><button class="phbtn" id="sumBtn" onclick="toggleLeft(\'exp-sum\')">펼쳐보기</button></div><iframe src="'+enc(WHITE+w.k+"_요약자료.html")+'"></iframe></div>'+
+   '<div class="pane lb"><div class="ph det"><span class="nmtxt" id="lbph">상세</span> <span class="fn" id="lbname">'+w.k+'_세부안내</span><button class="phbtn" id="detBtn" onclick="toggleLeft(\'exp-det\')">펼쳐보기</button></div><iframe id="lbframe" src="'+enc(WHITE+w.k+"_세부안내.html")+'"></iframe></div>'+
+  '</div>'+
+  stagePane(w.qid)+
+  rail(true);
+ whiten(p.querySelector(".lt iframe")); whiten(byId("lbframe"));
+ updateExpBtns(); syncFullBtn(); updateStageBtns();
+ showView();
+}
+
+function openMonth(m,ml){
+ CUR={type:"month",o:m}; stage="test"; monthSubmitted=false;
+ byId("vchip").textContent=m.k; byId("vchip").className="chip m";
+ byId("vtitle").textContent=ml; byId("vdate").textContent=m.d+" · "+m.rng+" 누적";
+ var links=m.incl.map(function(i){return '<span class="mlink" onclick="showSummary('+i+')">W'+i+' 요약</span>';}).join("");
+ var p=byId("panes"); p.className="panes monthly";
+ p.innerHTML=
+  '<div class="leftcol">'+
+   '<div class="pane"><div class="ph info"><span class="nmtxt">누적 범위</span> <span class="fn">'+m.rng+'</span></div>'+
+     '<div class="note">이 월말평가는 <b>'+m.rng+'</b>의 누적 점검입니다. 아래 <b>주차별 요약</b>을 누르면 오른쪽 화면에 표시됩니다.<div class="mlist">'+links+'</div>'+
+     '<button class="gotest" onclick="backToTest()">시험 응시 →</button>'+
+     '<div class="note" style="padding:8px 0 0;font-size:12.5px;color:var(--dim)">※ 월말 해설은 <b>제출하고 채점하기</b>까지 완료한 뒤 열립니다.</div></div></div>'+
+  '</div>'+
+  stagePane(m.qid)+
+  rail(true);
+ syncFullBtn(); updateStageBtns();
+ showView();
+}
+
+/* 해설 버튼 */
+function toggleSol(){
+ if(!CUR) return;
+ if(stage==="sol"){ backToTest(); return; }
+ if(CUR.type==="month" && !monthSubmitted){ noticeMonthSol(); return; }
+ showSol();
+}
+function noticeMonthSol(){
+ byId("ovcard").innerHTML='<h3>월말평가 해설</h3>'+
+  '<p>해설은 <b>「제출하고 채점하기」까지 완료</b>한 뒤에 열립니다.</p>'+
+  '<p style="color:var(--dim)">아직 제출 전입니다. 오른쪽 테스트에서 응시·제출을 마치면 <b>해설 버튼이 자동으로 활성화</b>됩니다. (테스트는 이 화면 안에서 제출해야 인식됩니다.)</p>'+
+  '<button class="ovclose" onclick="closeOv()">확인</button>';
+ byId("ov").classList.add("on");
+}
+/* 정보 버튼 */
+function toggleInfo(){
+ if(!CUR) return;
+ if(stage==="info"){ backToTest(); return; }
+ var h='<h3>참고 자료 선택</h3><p>선택하면 오른쪽 화면에 표시됩니다.</p>';
+ EXTRA.forEach(function(e,idx){ h+='<a class="ovlink" onclick="pickInfo('+idx+')"><span class="i">▣</span>'+e.n+'</a>'; });
+ if(CUR.type==="week"){ h+='<a class="ovlink" onclick="pickInfo(-1)"><span class="i">✓</span>'+CUR.o.k+' 해설서</a>'; }
+ h+='<button class="ovclose" onclick="closeOv()">닫기</button>';
+ byId("ovcard").innerHTML=h; byId("ov").classList.add("on");
+}
+function pickInfo(idx){
+ closeOv();
+ if(idx===-1){ showInfo(WHITE+CUR.o.k+"_주간평가_해설서.html",CUR.o.k+" 해설서"); return; }
+ var e=EXTRA[idx]; showInfo(e.f,e.n);
+}
+
+function toggleLeft(mode){
+ var lc=byId("leftcol"); if(!lc) return;
+ if(lc.classList.contains(mode)) lc.classList.remove(mode);
+ else { lc.classList.remove("exp-sum","exp-det"); lc.classList.add(mode); }
+ updateExpBtns();
+}
+function updateExpBtns(){
+ var lc=byId("leftcol"); if(!lc) return;
+ var s=byId("sumBtn"), d=byId("detBtn");
+ var mode=lc.classList.contains("exp-sum")?"sum":(lc.classList.contains("exp-det")?"det":"split");
+ if(s) s.textContent=(mode==="sum")?"복원":"펼쳐보기";
+ if(d) d.textContent=(mode==="det")?"복원":"펼쳐보기";
+}
+function showView(){ byId("viewer").classList.add("on"); document.body.style.overflow="hidden"; }
+function closeView(){
+ byId("viewer").classList.remove("on"); byId("panes").innerHTML=""; document.body.style.overflow="";
+ if(document.fullscreenElement) document.exitFullscreen();
+}
+function openTestTab(){ if(CUR) window.open(testUrl(CUR.o.qid),"_blank"); }
+function toggleFull(){
+ var v=byId("viewer");
+ if(!document.fullscreenElement){ if(v.requestFullscreen) v.requestFullscreen(); }
+ else { document.exitFullscreen(); }
+}
+function syncFullBtn(){ var b=byId("fullBtn"); if(b){ var on=!!document.fullscreenElement; b.textContent=on?"전체화면 최소":"전체화면"; b.classList.toggle("act",on); } }
+document.addEventListener("fullscreenchange",syncFullBtn);
+
+/* 테스트(GAS) iframe이 제출 완료를 알려오면 월말 해설 잠금 해제 */
+window.addEventListener("message",function(e){
+ var d=e&&e.data; if(!d||d.itall!=="submitted") return;
+ if(CUR && CUR.type==="month" && (!d.quiz || d.quiz===CUR.o.qid)){ monthSubmitted=true; }
+});
+
+function closeOv(){ byId("ov").classList.remove("on"); }
+document.addEventListener("keydown",function(e){ if(e.key==="Escape"){ if(byId("ov").classList.contains("on")) closeOv(); else if(byId("viewer").classList.contains("on")) closeView(); }});
+</script>
+</body></html>

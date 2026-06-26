@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>주간평가 12주차 — 재도전 졸업생(N수생) 전략 기초 — 테스트지</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4eee0;--card:#fffdf7;--border:#e7dec9;--bordstrong:#e0d5bd;--ink:#231f17;--text:#3a3429;--dim:#8a7f6b;--dim2:#9a8f79;--teal:#1c6b6e;--green:#2f7d4f;--gbg:#eaf5ec;--gbd:#c3e0ca;--red:#bf3b34;--rbg:#fbeeec;--rbd:#eccac6;--amber:#b56a27;--abg:#fbf3e4;--abd:#ecdcc0}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:400;line-height:1.7;margin:0;padding:52px 20px 110px}
+.wrap{max-width:800px;margin:0 auto}
+.kick{font-family:'DM Mono',monospace;color:var(--teal);letter-spacing:2.5px;font-size:12.5px;text-transform:uppercase}
+h1{font-family:'Noto Serif KR',serif;font-size:clamp(21px,3vw,29px);font-weight:900;color:var(--ink);border-bottom:3px solid var(--teal);padding-bottom:14px;margin:6px 0 6px}
+.meta{color:var(--dim);font-family:'DM Mono',monospace;font-size:13px;margin:6px 0 4px}
+.hint{color:var(--dim);font-size:13.5px;margin:8px 0}
+.name{margin:18px 0}
+label.nm{display:block;font-size:14px;color:var(--dim);margin-bottom:6px}
+.name input{width:100%;max-width:360px;background:var(--card);border:1px solid var(--bordstrong);border-radius:8px;color:var(--ink);padding:11px 14px;font-size:15px;font-family:inherit}
+.q{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin:16px 0}
+.qh{font-weight:700;color:var(--ink);font-size:15.5px;margin-bottom:8px}
+.qh .n{font-family:'Noto Serif KR',serif;font-weight:900;color:var(--teal);margin-right:8px}
+.badge{font-size:11.5px;font-family:'DM Mono',monospace;color:var(--dim);border:1px solid var(--border);border-radius:5px;padding:1px 7px;margin-left:8px}
+.opt{display:block;background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:8px 0;cursor:pointer;font-size:15px;transition:.12s;color:var(--text)}
+.opt:hover{border-color:var(--teal)}
+.opt input{margin-right:10px;accent-color:var(--teal)}
+.short input{width:100%;background:#fff;border:1px solid var(--bordstrong);border-radius:8px;color:var(--ink);padding:10px 14px;font-size:15px;font-family:inherit}
+button{background:var(--teal);color:#fffdf7;border:none;border-radius:8px;padding:13px 26px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:10px}
+button.ghost{background:transparent;color:var(--teal);border:1px solid var(--teal)}
+.res{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:22px;margin:18px 0}
+.score{font-family:'Noto Serif KR',serif;font-size:44px;font-weight:900;letter-spacing:-.02em}
+.ok{color:var(--green)}.no{color:var(--red)}
+.rev{font-size:14px;margin:10px 0;padding:10px 14px;border-radius:8px;background:#fff;border:1px solid var(--border)}
+.rev.cok{background:var(--gbg);border-color:var(--gbd)}.rev.cno{background:var(--rbg);border-color:var(--rbd)}
+.rev .ex{color:var(--dim);font-size:13.5px;margin-top:4px}
+.codebox{width:100%;background:#2b2722;border:1px solid var(--teal);border-radius:8px;color:#7fd9a8;padding:12px;font-family:'DM Mono',monospace;font-size:12.5px;margin-top:8px;word-break:break-all;min-height:60px;user-select:all;-webkit-user-select:all;white-space:pre-wrap}
+.choice{display:block;background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:8px 0;font-size:15px;color:var(--text)}
+.choice.correct{background:var(--gbg);border-color:var(--gbd);color:#1f5638;font-weight:600}
+.cbadge{font-size:11px;font-family:'DM Mono',monospace;color:#fffdf7;background:var(--green);border-radius:4px;padding:1px 7px;margin-left:8px}
+.amark{color:var(--green);font-weight:900;margin-right:6px}
+.acc{color:var(--dim);font-size:13px;margin-top:4px}
+.exp{margin-top:10px;padding-top:10px;border-top:1px dashed var(--bordstrong)}
+.exp .lab{font-family:'DM Mono',monospace;font-size:11.5px;color:var(--amber);border:1px solid var(--abd);background:var(--abg);border-radius:5px;padding:1px 7px;margin-right:8px}
+.foot{color:var(--dim2);font-size:12.5px;margin-top:36px;border-top:1px solid var(--bordstrong);padding-top:12px}
+</style></head><body><div class="wrap">
+<div class="kick">TEST · 테스트지</div>
+<h1>주간평가 12주차 — 재도전 졸업생(N수생) 전략 기초</h1>
+<p class="meta">2026-09-14 주차 · 대상: 원장·부원장 · 난이도 ★★★ 상급 · 20문항 · 자동채점 · 합격 70점</p>
+<p class="hint">먼저 「해당 주차 요약자료/세부안내」를 학습한 뒤 응시하세요. 제출하면 즉시 채점되고, 하단에 <b>결과코드</b>가 생성됩니다. 결과코드 상자를 복사해 관리자에게 제출하면 통계에 집계됩니다. 채점 후 <b>틀린 문제는 전부 맞힐 때까지 반복</b>해서 풀 수 있습니다.</p>
+<div class="name"><label class="nm" for="nm">이름 / 소속(센터)</label><input id="nm" placeholder="예: 홍길동 / 천안센터"></div>
+<form id="quiz"></form>
+<button id="submit">제출하고 채점하기</button>
+<div id="out"></div>
+<div class="foot">교과입시팀 · 원장·부원장 입시상식 프로그램 · 본 자료는 내부 학습용. 대학별 세부·수능최저·정시 환산·일정은 어디가(adiga.kr)·각 대학 2028 모집요강 최종본으로 확인.</div>
+<script>
+const QUIZ = {"id": "W20260914_W12", "title": "주간평가 12주차 — 재도전 졸업생 전략", "questions": [{"type": "mc", "q": "재도전 졸업생(N수생)의 내신 체계로 옳은 것은?", "choices": ["현역과 동일한 5등급제 학생부", "재학 시절의 9등급제 학생부", "아예 학생부가 없는 상태", "검정고시 성적만 보유"], "answer": 1, "ex": "졸업생은 9등급제 학생부를 보유."}, {"type": "mc", "q": "대학의 졸업생·현역 내신 평가 방향으로 옳은 것은?", "choices": ["둘을 똑같은 기준으로 한데 비교한다", "9등급(졸업생)·5등급(현역) 분리평가", "졸업생 학생부는 무시한다", "현역만 평가하고 졸업생은 정시로만 보낸다"], "answer": 1, "ex": "같은 체계끼리(9등급/5등급) 분리평가 방향."}, {"type": "mc", "q": "졸업생이 가진 '카드 3장'에 해당하는 것은?", "choices": ["수능·면접·실기", "수시(학종·교과)·논술·정시", "내신·봉사·동아리", "서류·자기소개서·추천서 묶음"], "answer": 1, "ex": "학생부 보유로 수시·논술·정시를 모두 활용 가능."}, {"type": "mc", "q": "졸업생과 검정고시 출신의 결정적 차이로 옳은 것은?", "choices": ["졸업생은 수능을 못 본다", "졸업생은 학생부가 있어 수시 카드를 쓸 수 있다", "검정고시생이 오히려 활용 가능한 카드가 더 많다는 점", "둘은 완전히 동일하다"], "answer": 1, "ex": "졸업생은 학생부 보유, 검정고시는 학생부가 없음."}, {"type": "mc", "q": "현 졸업생·N수생이 보는 2027 수능의 시기적 의미로 옳은 것은?", "choices": ["2028 통합형보다 구조적으로 훨씬 더 불리한 해", "현행 체제·정시 기회가 가장 넓은 마지막 해", "정시가 가장 좁아지는 해", "입시에서 의미가 없는 해"], "answer": 1, "ex": "2027은 현행 수능·정시가 가장 넓은 마지막 해."}, {"type": "mc", "q": "정시 비중이 큰 상위대를 노릴 때 N수생에게 유리한 점으로 옳은 것은?", "choices": ["수능을 아예 응시하지 않아도 된다는 점", "수능 경쟁력으로 승부할 여지가 큰 점", "내신만으로 합격하는 점", "면접이 아예 없는 점"], "answer": 1, "ex": "정시 비중이 크면 수능 경쟁력으로 승부 가능."}, {"type": "mc", "q": "2028 통합형에서 빠지는 기하·미적분Ⅱ·진로선택은 졸업생에게 어떻게 평가되나?", "choices": ["수능 시험 과목으로 그대로 출제되어 평가된다", "수능이 아닌 학생부/비교내신으로 평가된다", "평가에서 완전히 제외된다", "면접으로만 평가된다"], "answer": 1, "ex": "수능이 아닌 학생부/비교내신으로 평가."}, {"type": "mc", "q": "'졸업생은 정시밖에 답이 없다'는 설명의 문제점은?", "choices": ["지적할 부분이 전혀 없는 완전히 정확한 설명이다", "학생부가 있어 수시·논술도 함께 쓸 수 있다", "졸업생은 정시도 못 본다", "졸업생은 논술만 가능하다"], "answer": 1, "ex": "졸업생은 카드 3장(수시·논술·정시) 활용 가능."}, {"type": "short", "q": "졸업생이 학생부를 보유해 수시·논술·정시를 동시에 활용할 수 있는 강점을 비유적으로 '카드 몇 장'이라 하는가? (숫자만)", "accept": ["3", "3장"], "ex": "수시·논술·정시 = 카드 3장."}, {"type": "mc", "q": "잇올의 졸업생 대응에서 가장 먼저 하는 일로 옳은 것은?", "choices": ["학생의 취미와 특기부터 가장 먼저 조사해 둔다", "보유 학생부 분석으로 재지원 가능 전형 매핑", "무조건 정시만 준비시키기", "검정고시로 전환 안내"], "answer": 1, "ex": "학생부 분석 → 재지원 가능한 수시 전형 매핑이 출발점."}, {"type": "mc", "q": "졸업생의 카드 3장 포트폴리오 설계로 옳은 것은?", "choices": ["오직 정시 한 가지 카드만 골라 집중 준비한다", "수시(학종·교과)·논술·정시를 병행 설계한다", "논술만 집중한다", "면접만 준비한다"], "answer": 1, "ex": "세 카드를 균형 있게 병행 설계."}, {"type": "mc", "q": "졸업생 학생부의 9등급 평가가 현역 5등급과 분리되는 이유로 옳은 것은?", "choices": ["졸업생을 특별히 한층 더 우대해 주기 위해서이다", "서로 다른 등급 체계를 공정하게 비교하기 위해", "현역을 탈락시키기 위해", "학생부를 무시하기 위해"], "answer": 1, "ex": "체계가 달라 같은 체계끼리 분리해 공정 비교."}, {"type": "mc", "q": "검정고시 출신과 비교한 졸업생의 수시 경쟁력으로 옳은 것은?", "choices": ["학생부가 없어 더 불리하다", "학생부가 있어 수시 카드에서 유리하다", "둘의 수시 경쟁력이 동일하다", "졸업생은 수시 지원 자체가 불가능하다"], "answer": 1, "ex": "졸업생은 학생부 보유로 수시에서 상대적 강점."}, {"type": "mc", "q": "정시 비중이 큰 상위대에서 N수생이 활용할 핵심 자료로 옳은 것은?", "choices": ["교내 봉사활동 시간 기록표", "대학별 환산 유불리 분석", "교내 동아리 명단", "좋아하는 과목 목록"], "answer": 1, "ex": "정시는 대학별 환산 유불리 분석이 핵심."}, {"type": "mc", "q": "졸업생 상담에서 관리자가 교정해야 할 흔한 오해로 옳은 것은?", "choices": ["'졸업생은 카드가 3장이다'", "'졸업생은 정시밖에 없다'", "'졸업생은 학생부가 있다'", "'졸업생은 분리평가된다'"], "answer": 1, "ex": "'정시밖에 없다'는 오해를 교정해야 한다."}, {"type": "short", "q": "학생부가 있는 졸업생과 달리, 학생부가 없어 논술·정시 위주로만 가야 하는 출신을 무엇이라 하는가? (4글자)", "accept": ["검정고시", "검정고시생"], "ex": "검정고시 출신(학생부 부재)."}, {"type": "mc", "q": "졸업생에게 학생부가 '있다'는 사실이 주는 전략적 의미로 옳은 것은?", "choices": ["수시 지원 자체가 오히려 완전히 막혀 버린다", "수시·논술·정시를 함께 설계할 수 있다", "정시만 지원해야 한다", "면접이 면제된다"], "answer": 1, "ex": "학생부 보유로 세 카드 병행 설계 가능."}, {"type": "mc", "q": "'졸업생=검정고시'로 잘못 묶을 때 생기는 상담 오류로 옳은 것은?", "choices": ["졸업생의 수시 카드 강점을 놓친다", "졸업생의 정시 기회를 과대평가한다", "검정고시생에게 학생부가 생긴다", "아무 문제가 없다"], "answer": 0, "ex": "학생부 유무가 달라 졸업생의 수시 강점을 놓치게 된다."}, {"type": "mc", "q": "졸업생 포트폴리오에서 '정시 강점화' 단계의 핵심으로 옳은 것은?", "choices": ["내신을 다시 만드는 것", "정시 비중 큰 상위대의 환산 유불리 분석", "봉사활동을 늘리는 것", "시간을 들여 자기소개서를 정성껏 작성하는 것"], "answer": 1, "ex": "정시 비중 큰 상위대 환산 분석이 정시 강점화의 핵심."}, {"type": "mc", "q": "관리자가 졸업생 상담을 마무리할 때 강조할 메시지로 옳은 것은?", "choices": ["정시 한 장만 믿고 다른 카드 없이 끝까지 밀어붙이자는 메시지", "보유 학생부로 수시·논술·정시 세 카드를 함께 보자는 메시지", "수시를 모두 포기하자는 메시지", "검정고시로 전환하자는 메시지"], "answer": 1, "ex": "카드 3장을 함께 설계하자는 메시지가 핵심."}]};
+const form=document.getElementById('quiz');
+function norm(s){return (s||'').toString().trim().toLowerCase().replace(/\s+/g,'').replace(/[.\-\/]/g,'');}
+function qInner(it,i,pfx){const tag=it.type==='mc'?'객관식':'단답형';
+ let h=`<div class="qh"><span class="n">Q${i+1}</span>${it.q}<span class="badge">${tag}</span></div>`;
+ if(it.type==='mc'){it.choices.forEach((c,j)=>{h+=`<label class="opt"><input type="radio" name="${pfx}${i}" value="${j}">${c}</label>`;});}
+ else{h+=`<div class="short"><input type="text" name="${pfx}${i}" placeholder="답을 입력하세요" autocomplete="off"></div>`;}
+ return h;}
+function judge(it,i,pfx){if(it.type==='mc'){const sel=document.querySelector(`input[name="${pfx}${i}"]:checked`);return{given:sel?sel.value:'',correct:!!sel&&Number(sel.value)===it.answer};}
+ const v=document.querySelector(`input[name="${pfx}${i}"]`).value;return{given:v,correct:it.accept.some(a=>norm(a)===norm(v))};}
+QUIZ.questions.forEach((it,i)=>{const d=document.createElement('div');d.className='q';d.innerHTML=qInner(it,i,'q');form.appendChild(d);});
+function renderPractice(remaining){
+ const p=document.getElementById('practice');
+ let h=`<div class="res"><div><b>틀린 문제만 다시 풀기</b> — 남은 <b class="no">${remaining.length}</b>문항</div><div class="hint">모두 맞힐 때까지 반복됩니다. 정답이 헷갈리면 「해설서」를 참고하세요. (첫 제출 결과코드·점수는 그대로입니다.)</div>`;
+ remaining.forEach(i=>{h+=`<div class="q">${qInner(QUIZ.questions[i],i,'r')}</div>`;});
+ h+=`<button id="recheck">다시 채점</button><div id="pout"></div></div>`;
+ p.innerHTML=h;window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+ document.getElementById('recheck').onclick=()=>{const still=[];let rev='';
+  remaining.forEach(i=>{const it=QUIZ.questions[i];const r=judge(it,i,'r');
+   if(r.correct){rev+=`<div class="rev cok"><b class="ok">○ Q${i+1}</b> 정답!</div>`;}
+   else{still.push(i);rev+=`<div class="rev cno"><b class="no">✕ Q${i+1}</b> 아직 정답이 아닙니다 — 다시 풀어보세요</div>`;}});
+  if(still.length===0){document.getElementById('pout').innerHTML=rev+`<div class="hint" style="color:var(--green);font-weight:700;margin-top:8px">🎉 모든 문제를 맞혔습니다! 반복 학습 완료.</div>`;window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});}
+  else{renderPractice(still);}
+ };}
+document.getElementById('submit').onclick=()=>{
+ const name=document.getElementById('nm').value.trim()||'(이름미입력)';
+ let score=0;const flags=[];const ans=[];
+ let html=`<div class="res"><div>채점 결과 — <b>${name}</b></div>`;
+ QUIZ.questions.forEach((it,i)=>{const r=judge(it,i,'q');if(r.correct)score++;flags.push(r.correct?1:0);ans.push(r.given);});
+ const pct=Math.round(score/QUIZ.questions.length*100);
+ html+=`<div class="score ${pct>=70?'ok':'no'}">${score} / ${QUIZ.questions.length} <span style="font-size:18px">(${pct}점)</span></div>`;
+ html+=`<div class="hint">${pct>=70?'합격 기준(70점) 충족':'합격 기준(70점) 미달 — 자료 재학습 권장'}</div>`;
+ QUIZ.questions.forEach((it,i)=>{const ok=flags[i]===1;
+  let yourTxt=it.type==='mc'?(ans[i]!==''?it.choices[Number(ans[i])]:'(무응답)'):(ans[i]||'(무응답)');
+  let corrTxt=it.type==='mc'?it.choices[it.answer]:it.accept[0];
+  html+=`<div class="rev ${ok?'cok':'cno'}"><b class="${ok?'ok':'no'}">${ok?'○':'✕'} Q${i+1}</b> ${it.q}<br><span class="${ok?'ok':'no'}">내 답: ${yourTxt}</span>${ok?'':` · <span class="ok">정답: ${corrTxt}</span>`}<div class="ex">${it.ex||''}</div></div>`;});
+ const payload={t:QUIZ.id,n:name,d:new Date().toISOString().slice(0,16).replace('T',' '),s:score,tot:QUIZ.questions.length,c:flags};
+ const code='ITALL1|'+btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+ html+=`<div style="margin-top:18px"><b>결과코드</b> (아래 상자를 그대로 복사해 관리자에게 제출):<div class="codebox" id="code">${code}</div><button class="ghost" id="copy">결과코드 복사</button></div>`;
+ const wrong=[];flags.forEach((f,i)=>{if(f===0)wrong.push(i);});
+ if(wrong.length){html+=`<div style="margin-top:18px;border-top:1px dashed var(--bordstrong);padding-top:14px"><b>반복 학습</b> — 틀린 ${wrong.length}문항을 전부 맞힐 때까지 다시 풀 수 있습니다.<br><button class="ghost" id="retry" style="margin-top:8px">틀린 문제만 다시 풀기 (${wrong.length}문항)</button></div>`;}
+ else{html+=`<div class="hint" style="color:var(--green);font-weight:700;margin-top:14px">🎉 전 문항 정답입니다. 반복 학습이 필요 없습니다.</div>`;}
+ html+=`</div><div id="practice"></div>`;
+ const out=document.getElementById('out');out.innerHTML=html;window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+ document.getElementById('copy').onclick=()=>{const t=document.getElementById('code').textContent;navigator.clipboard&&navigator.clipboard.writeText(t);const r=document.getSelection(),g=document.createRange();g.selectNodeContents(document.getElementById('code'));r.removeAllRanges();r.addRange(g);try{document.execCommand('copy');}catch(e){}document.getElementById('copy').textContent='복사됨 ✓';};
+ if(wrong.length){document.getElementById('retry').onclick=()=>renderPractice(wrong.slice());}
+};
+</script></div></body></html>

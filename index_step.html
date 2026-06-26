@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>잇올 입시상식 커리큘럼 — 스텝형</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--blue:#2F5BFF;--blue2:#1d3fb0;--ink:#11131A;--dim:#717784;--dim2:#9aa1ad;--line:#ECEDEF;--soft:#F2F4F8;--bluetint:#EEF1FF;--green:#22A06B;--red:#bf3b34;--amber:#b56a27}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--blue);font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);min-height:100vh;line-height:1.55}
+.center{min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px}
+.card{background:#fff;border-radius:22px;width:100%;max-width:720px;box-shadow:0 18px 50px rgba(13,22,60,.25);overflow:hidden}
+.card .top{height:8px;background:var(--blue)}
+.pad{padding:26px 28px}
+.kick{font-family:'DM Mono',monospace;color:var(--blue);letter-spacing:2px;font-size:12px;text-transform:uppercase;font-weight:600}
+h1{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:8px 0 6px}
+.desc{color:var(--dim);font-size:14px;margin-bottom:16px}
+.prog{background:var(--soft);border-radius:12px;padding:13px 16px;margin:6px 0 18px}
+.prog .pl{display:flex;justify-content:space-between;font-size:12.5px;color:var(--dim);margin-bottom:7px;font-weight:600}
+.prog .bar{height:8px;background:#E1E5EE;border-radius:5px;overflow:hidden}
+.prog .fill{height:100%;background:var(--blue);border-radius:5px;width:0;transition:width .4s}
+.mh{font-size:13px;font-weight:700;color:var(--blue2);margin:18px 0 8px;display:flex;align-items:center;gap:8px}
+.mh .tag{font-family:'DM Mono',monospace;font-weight:500;color:var(--dim2);font-size:11px}
+.row{display:flex;align-items:center;gap:13px;padding:13px 15px;border:1px solid var(--line);border-radius:14px;margin:8px 0;cursor:pointer;transition:.12s;background:#fff}
+.row:hover{border-color:var(--blue);background:var(--bluetint)}
+.row.mo{background:#FBFCFF;border-style:dashed}
+.row.mo:hover{background:var(--bluetint)}
+.num{width:42px;height:42px;border-radius:12px;background:var(--bluetint);color:var(--blue);font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.row.mo .num{background:#EAF6F0;color:var(--green)}
+.rt{flex:1;min-width:0}
+.rt .nm{font-weight:700;font-size:15px}
+.rt .sub{color:var(--dim);font-size:12.5px;margin-top:2px}
+.rt .sub b{color:var(--blue2);font-weight:700}
+.rmeta{font-family:'DM Mono',monospace;font-size:11.5px;color:var(--dim2);text-align:right;white-space:nowrap}
+.arr{color:var(--blue);font-size:20px}
+.refs{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.ref{border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:13px;color:var(--ink);cursor:pointer;background:#fff}
+.ref:hover{border-color:var(--blue);color:var(--blue)}
+.foot{color:var(--dim2);font-size:12px;border-top:1px solid var(--line);padding:16px 28px;line-height:1.6}
+/* ===== viewer ===== */
+#viewer{position:fixed;inset:0;background:var(--blue);display:none;align-items:center;justify-content:center;padding:26px 16px;z-index:50}
+#viewer.on{display:flex}
+.vcard{background:#fff;border-radius:22px;width:100%;max-width:1000px;height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 18px 50px rgba(13,22,60,.3)}
+.vtop{display:flex;align-items:center;gap:12px;padding:15px 20px;border-bottom:1px solid var(--line)}
+.vchip{width:44px;height:34px;border-radius:9px;background:var(--blue);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+.vchip.m{background:var(--green)}
+.vtitle{font-weight:800;font-size:16px}
+.vmeta{font-family:'DM Mono',monospace;font-size:12px;color:var(--dim2)}
+.counter{margin-left:auto;font-family:'DM Mono',monospace;font-size:12px;color:var(--blue);font-weight:600;background:var(--bluetint);padding:5px 11px;border-radius:8px}
+.stage{flex:1;min-height:0;position:relative;background:#fff}
+.stage iframe{width:100%;height:100%;border:0;background:#fff}
+.rangebox{padding:30px;height:100%;overflow:auto}
+.rangebox h2{font-size:19px;font-weight:800;margin-bottom:8px}
+.rangebox p{color:var(--dim);font-size:14px;margin-bottom:16px}
+.wlinks{display:flex;flex-wrap:wrap;gap:8px}
+.wlink{border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--blue);cursor:pointer;font-weight:600}
+.wlink:hover{background:var(--bluetint)}
+.stback{position:absolute;top:10px;right:10px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 10px;font-size:12px;color:var(--blue);cursor:pointer;font-weight:600;font-family:inherit}
+.vbar{border-top:1px solid var(--line);padding:13px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dots{display:flex;gap:7px;align-items:center}
+.dot{width:9px;height:9px;border-radius:50%;background:#D7DBE2}
+.dot.on{background:var(--blue);transform:scale(1.15)}
+.dot.done{background:#9DB4FF}
+.nav{display:flex;gap:8px;margin-left:auto;align-items:center}
+.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 15px;font-size:13.5px;font-weight:700;font-family:inherit;cursor:pointer;color:var(--ink)}
+.btn:hover{border-color:var(--blue);color:var(--blue)}
+.btn.pri{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn.pri:hover{background:var(--blue2);color:#fff}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.btn.act{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tools{display:flex;gap:6px;flex-wrap:wrap;width:100%;margin-top:2px}
+.tool{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 11px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;color:var(--dim)}
+.tool:hover{border-color:var(--blue);color:var(--blue)}
+.tool.act{background:var(--blue);color:#fff;border-color:var(--blue)}
+#ov{position:fixed;inset:0;background:rgba(17,19,26,.5);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
+#ov.on{display:flex}
+.ovc{background:#fff;border-radius:18px;max-width:440px;width:100%;padding:24px}
+.ovc h3{font-size:18px;font-weight:800;margin-bottom:6px}
+.ovc p{font-size:13.5px;color:var(--dim);margin-bottom:8px}
+.ovl{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin:8px 0;cursor:pointer;color:var(--ink)}
+.ovl:hover{border-color:var(--blue);color:var(--blue)}
+.ovx{margin-top:8px;width:100%;background:var(--blue);color:#fff;border:0;border-radius:11px;padding:12px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer}
+@media(max-width:640px){.vcard{height:94vh}.pad{padding:20px}}
+</style></head><body>
+
+<div class="center" id="home">
+ <div class="card">
+  <div class="top"></div>
+  <div class="pad">
+   <div class="kick">ITALL · 원장·부원장 입시상식</div>
+   <h1>입시상식 커리큘럼</h1>
+   <div class="desc">매주 한 회차씩 — 요약 · 상세 · 테스트를 하나의 흐름으로. 회차를 누르면 전체 화면 학습이 시작됩니다.</div>
+   <div class="prog"><div class="pl"><span>학습 진행</span><span id="progtxt">0 / 17주</span></div><div class="bar"><div class="fill" id="progfill"></div></div></div>
+   <div id="sections"></div>
+   <div class="mh">참고 자료</div>
+   <div class="refs" id="refs"></div>
+  </div>
+  <div class="foot">교과입시팀 · 회차를 누르면 <b>요약 → 상세 → 테스트</b> 순서로 전체 화면 학습이 진행됩니다. 콘텐츠는 흰 배경 버전(white/)을, 테스트는 구글 채점 폼을 불러옵니다.</div>
+ </div>
+</div>
+
+<div id="viewer"><div class="vcard">
+ <div class="vtop"><span class="vchip" id="vchip">W1</span><div><div class="vtitle" id="vtitle">제목</div><div class="vmeta" id="vmeta"></div></div><span class="counter" id="counter">STEP 1</span></div>
+ <div class="stage" id="stage"></div>
+ <div class="vbar">
+  <div class="dots" id="dots"></div>
+  <div class="nav">
+   <button class="btn" id="prevBtn" onclick="prev()">◀ 이전</button>
+   <button class="btn pri" id="nextBtn" onclick="next()">다음 ▶</button>
+  </div>
+  <div class="tools">
+   <button class="tool" id="solBtn" onclick="toggleSol()">해설</button>
+   <button class="tool" id="infoBtn" onclick="toggleInfo()">정보</button>
+   <button class="tool" id="fullBtn" onclick="toggleFull()">전체화면</button>
+   <button class="tool" onclick="openTestTab()">새 탭 시험 ↗</button>
+   <button class="tool" onclick="closeView()" style="margin-left:auto">✕ 메인화면 가기</button>
+  </div>
+ </div>
+</div></div>
+
+<div id="ov"><div class="ovc" id="ovc"></div></div>
+
+<script>
+var GAS="https://script.google.com/macros/s/AKfycbxIdlyIBG-7sWJOWe06S4HC32GZQ_Kzu_apfyBw-6460Mmb5aVdqXGX_URQ0mD3F8iFbg/exec";
+var WHITE="white/";
+var WEEKS=[
+ {k:"W1",t:"2028 개편·세대 구분",d:"06-29",lv:"★",qid:"W20260629_W1"},
+ {k:"W2",t:"전형의 종류와 구조",d:"07-06",lv:"★",qid:"W20260706_W2"},
+ {k:"W3",t:"통합형 수능 상세",d:"07-13",lv:"★",qid:"W20260713_W3"},
+ {k:"W4",t:"내신 5등급제",d:"07-20",lv:"★",qid:"W20260720_W4"},
+ {k:"W5",t:"정시의 학생부화",d:"07-27",lv:"★★",qid:"W20260727_W5"},
+ {k:"W6",t:"수도권 주요대 전형 심화",d:"08-03",lv:"★★",qid:"W20260803_W6"},
+ {k:"W7",t:"의대 전형 구조",d:"08-10",lv:"★★",qid:"W20260810_W7"},
+ {k:"W8",t:"약·치·수의대 + 검정고시",d:"08-17",lv:"★★",qid:"W20260817_W8"},
+ {k:"W9",t:"정시 환산점수",d:"08-24",lv:"★★★",qid:"W20260824_W9"},
+ {k:"W10",t:"수능최저 읽는 법",d:"08-31",lv:"★★★",qid:"W20260831_W10"},
+ {k:"W11",t:"학종 평가요소",d:"09-07",lv:"★★★",qid:"W20260907_W11"},
+ {k:"W12",t:"재도전 졸업생 전략",d:"09-14",lv:"★★★",qid:"W20260914_W12"},
+ {k:"W13",t:"심화 케이스형",d:"09-21",lv:"★★★★",qid:"W20260921_W13"},
+ {k:"W14",t:"메디컬 대학별 변별",d:"09-28",lv:"★★★★",qid:"W20260928_W14"},
+ {k:"W15",t:"수도권·인서울 변별",d:"10-05",lv:"★★★★",qid:"W20261005_W15"},
+ {k:"W16",t:"지방거점·특수목적대 변별",d:"10-12",lv:"★★★★",qid:"W20261012_W16"},
+ {k:"W17",t:"검정고시·재도전 변별",d:"10-19",lv:"★★★★",qid:"W20261019_W17"}
+];
+var MONTHS=[
+ {k:"M1",d:"07-20",rng:"W1~W4",incl:[1,2,3,4],qid:"M20260727_M1"},
+ {k:"M2",d:"08-17",rng:"W5~W8",incl:[5,6,7,8],qid:"M20260817_M2"},
+ {k:"M3",d:"09-14",rng:"W9~W12",incl:[9,10,11,12],qid:"M20260914_M3"}
+];
+var SECTIONS=[
+ {t:"1개월차",sub:"W1–W4 · 기초",ws:[0,1,2,3],m:0,ml:"1~4주 종합평가"},
+ {t:"2개월차",sub:"W5–W8 · 중급",ws:[4,5,6,7],m:1,ml:"5~8주 종합평가"},
+ {t:"3개월차",sub:"W9–W12 · 상급",ws:[8,9,10,11],m:2,ml:"9~12주 종합평가"},
+ {t:"4개월차~ · 심화",sub:"W13–W17 (월말 없음)",ws:[12,13,14,15,16],m:null,ml:null}
+];
+var EXTRA=[
+ {n:"부록 · 정시 수능100/저학생부/검정고시 길",f:"부록_정시수능100_저학생부_검정고시길.html"},
+ {n:"전체 커리큘럼 · 종합안내",f:"00_전체커리큘럼_종합안내.html"},
+ {n:"12주 로드맵",f:"00_로드맵_12주_커리큘럼.html"},
+ {n:"상위15개대 2028 시행계획 브리핑",f:"부록_상위15개대_2028시행계획.html"}
+];
+
+function byId(x){return document.getElementById(x);}
+function enc(f){return encodeURI(f);}
+function testUrl(q){return GAS+"?quiz="+encodeURIComponent(q);}
+function getDone(){try{return JSON.parse(localStorage.getItem("itall_step_done")||"[]");}catch(e){return [];}}
+function markDone(k){var a=getDone();if(a.indexOf(k)<0){a.push(k);try{localStorage.setItem("itall_step_done",JSON.stringify(a));}catch(e){}}updateProg();}
+function updateProg(){var n=getDone().filter(function(x){return x[0]==="W";}).length;byId("progtxt").textContent=n+" / 17주";byId("progfill").style.width=Math.round(n/17*100)+"%";}
+
+var CUR=null,TYPE="",STEPS=[],STEP=0,STAGE="step",monthSubmitted=false,curInfo=null;
+var QS=new URLSearchParams(location.search);
+var UPTO=parseInt(QS.get("upto"),10); if(!UPTO||isNaN(UPTO)||UPTO<1) UPTO=99;
+
+/* 홈 렌더 */
+(function(){
+ var host=byId("sections");
+ if(UPTO<99){
+  var mtxt=UPTO>=12?" + 월말 M1·M2·M3":(UPTO>=8?" + 월말 M1·M2":(UPTO>=4?" + 월말 M1":""));
+  var sb=document.createElement("div");
+  sb.style.cssText="background:var(--bluetint);border:1px solid #d4ddff;border-left:4px solid var(--blue);border-radius:12px;padding:11px 15px;margin:0 0 12px;font-size:13.5px;color:var(--blue2);font-weight:600";
+  sb.innerHTML='이번 공개 범위 · 1~'+UPTO+'주차'+mtxt;
+  host.appendChild(sb);
+ }
+ SECTIONS.forEach(function(sec){
+  var vis=sec.ws.filter(function(idx){return (idx+1)<=UPTO;});
+  var monEnd=(sec.m!==null)?MONTHS[sec.m].incl[MONTHS[sec.m].incl.length-1]:0;
+  var showMon=(sec.m!==null)&&(UPTO>=monEnd);
+  if(vis.length===0 && !showMon) return;
+  var h=document.createElement("div");h.className="mh";h.innerHTML=sec.t+' <span class="tag">'+sec.sub+'</span>';host.appendChild(h);
+  vis.forEach(function(idx){
+   var w=WEEKS[idx],wn=idx+1;
+   var r=document.createElement("div");r.className="row";
+   r.innerHTML='<div class="num">'+w.k+'</div><div class="rt"><div class="nm"><b style="color:var(--blue2)">'+wn+'주차</b> · '+w.t+'</div><div class="sub">요약 · 상세 · 테스트</div></div><div class="rmeta">'+w.d+'<br>'+w.lv+'</div><span class="arr">›</span>';
+   r.onclick=function(){openWeek(w);};host.appendChild(r);
+  });
+  if(showMon){
+   var m=MONTHS[sec.m];
+   var r=document.createElement("div");r.className="row mo";
+   r.innerHTML='<div class="num">'+m.k+'</div><div class="rt"><div class="nm"><b style="color:var(--green)">'+sec.ml+'</b></div><div class="sub">'+m.rng+' 누적 · 별도 페이지(새 창)</div></div><div class="rmeta">'+m.d+'<br>월말 ↗</div><span class="arr">›</span>';
+   r.onclick=function(){window.open("month.html?m="+m.k+"&upto="+UPTO,"_blank");};host.appendChild(r);
+  }
+ });
+ var rf=byId("refs");
+ EXTRA.forEach(function(e){var b=document.createElement("div");b.className="ref";b.textContent=e.n;b.onclick=function(){window.open(enc(e.f),"_blank");};rf.appendChild(b);});
+ updateProg();
+})();
+
+function stepDefs(){
+ if(TYPE==="month") return [{kind:"range",label:"범위 안내"},{kind:"test",label:"테스트"}];
+ return [{kind:"sum",label:"요약"},{kind:"det",label:"상세"},{kind:"test",label:"테스트"}];
+}
+function openWeek(w){ CUR=w;TYPE="week";STEPS=stepDefs();STEP=0;STAGE="step";monthSubmitted=false;markDone(w.k);
+ byId("vchip").textContent=w.k;byId("vchip").className="vchip";
+ byId("vtitle").textContent=w.t;byId("vmeta").textContent=w.d+" · "+w.lv;
+ renderViewer(); byId("viewer").classList.add("on");document.body.style.overflow="hidden";
+}
+function openMonth(m,ml){ CUR=m;TYPE="month";STEPS=stepDefs();STEP=0;STAGE="step";monthSubmitted=false;
+ byId("vchip").textContent=m.k;byId("vchip").className="vchip m";
+ byId("vtitle").textContent=ml;byId("vmeta").textContent=m.d+" · "+m.rng+" 누적";
+ renderViewer(); byId("viewer").classList.add("on");document.body.style.overflow="hidden";
+}
+function whiten(fr){ if(!fr)return; fr.addEventListener("load",function(){try{var d=fr.contentDocument;if(d){d.documentElement.style.background="#fff";if(d.body)d.body.style.background="#fff";}}catch(e){}}); }
+
+function renderStage(){
+ var st=byId("stage");
+ if(STAGE==="sol"){ var key=CUR.k+(TYPE==="week"?"_주간평가_해설서.html":"_월말평가_해설서.html");
+  st.innerHTML='<iframe id="sf"></iframe><button class="stback" onclick="toStep()">← 평가로 돌아가기</button>';
+  var f=byId("sf");f.src=enc(WHITE+key);whiten(f);
+ } else if(STAGE==="info"){ st.innerHTML='<iframe id="sf"></iframe><button class="stback" onclick="toStep()">← 돌아가기</button>';
+  var f=byId("sf");f.src=enc(curInfo);whiten(f);
+ } else {
+  var cur=STEPS[STEP];
+  if(cur.kind==="test"){ st.innerHTML='<iframe id="sf"></iframe>';byId("sf").src=testUrl(CUR.qid); }
+  else if(cur.kind==="range"){
+   var links=CUR.incl.map(function(i){return '<span class="wlink" onclick="window.open(enc(\''+WHITE+'W'+i+'_요약자료.html\'),\'_blank\')">W'+i+' 요약 ↗</span>';}).join("");
+   st.innerHTML='<div class="rangebox"><h2>누적 범위 · '+CUR.rng+'</h2><p>이 월말평가는 <b>'+CUR.rng+'</b>의 누적 점검입니다. 아래 주차 요약을 새 창에서 볼 수 있어요. 준비되면 <b>다음 ▶</b>으로 테스트를 진행하세요.<br>※ 해설은 테스트 제출 완료 후 활성화됩니다.</p><div class="wlinks">'+links+'</div></div>';
+  } else {
+   var file=CUR.k+(cur.kind==="sum"?"_요약자료.html":"_세부안내.html");
+   st.innerHTML='<iframe id="sf"></iframe>';var f=byId("sf");f.src=enc(WHITE+file);whiten(f);
+  }
+ }
+ updateBars();
+}
+function renderViewer(){
+ var dots="";STEPS.forEach(function(s,i){dots+='<span class="dot" id="dot'+i+'"></span>';});
+ byId("dots").innerHTML=dots; renderStage();
+}
+function updateBars(){
+ STEPS.forEach(function(s,i){var d=byId("dot"+i);if(!d)return;d.className="dot"+(STAGE==="step"&&i===STEP?" on":(i<STEP?" done":""));});
+ byId("counter").textContent=(STAGE==="sol")?"해설":(STAGE==="info")?"참고자료":("STEP "+(STEP+1)+" / "+STEPS.length+" · "+STEPS[STEP].label);
+ var pv=byId("prevBtn"),nx=byId("nextBtn");
+ pv.disabled=(STAGE!=="step"||STEP===0);
+ if(STAGE!=="step"){ nx.disabled=true; nx.textContent="다음 ▶"; }
+ else { nx.disabled=(STEP>=STEPS.length-1); nx.textContent=(STEP>=STEPS.length-1)?"마지막 단계":("다음 ▶ "+ (STEPS[STEP+1]?STEPS[STEP+1].label:"") ); }
+ byId("solBtn").className="tool"+(STAGE==="sol"?" act":"");byId("solBtn").textContent=(STAGE==="sol")?"평가로 돌아가기":"해설";
+ byId("infoBtn").className="tool"+(STAGE==="info"?" act":"");byId("infoBtn").textContent=(STAGE==="info")?"돌아가기":"정보";
+}
+function next(){ if(STAGE!=="step"){toStep();return;} if(STEP<STEPS.length-1){STEP++;renderStage();} }
+function prev(){ if(STAGE!=="step")return; if(STEP>0){STEP--;renderStage();} }
+function toStep(){ STAGE="step";renderStage(); }
+
+function toggleSol(){
+ if(STAGE==="sol"){ toStep();return; }
+ if(TYPE==="month"&&!monthSubmitted){ noticeSol();return; }
+ STAGE="sol";renderStage();
+}
+function noticeSol(){
+ byId("ovc").innerHTML='<h3>월말평가 해설</h3><p>해설은 <b>「제출하고 채점하기」까지 완료</b>한 뒤 열립니다.</p><p>오른쪽 테스트 단계에서 응시·제출을 마치면 <b>해설이 자동 활성화</b>됩니다. (이 화면 안에서 제출해야 인식됩니다.)</p><button class="ovx" onclick="closeOv()">확인</button>';
+ byId("ov").classList.add("on");
+}
+function toggleInfo(){
+ if(STAGE==="info"){ toStep();return; }
+ var h='<h3>참고 자료 선택</h3><p>선택하면 화면에 표시됩니다.</p>';
+ EXTRA.forEach(function(e,i){h+='<div class="ovl" onclick="pickInfo('+i+')">▣ '+e.n+'</div>';});
+ if(TYPE==="week"){h+='<div class="ovl" onclick="pickInfo(-1)">✓ '+CUR.k+' 해설서</div>';}
+ h+='<button class="ovx" onclick="closeOv()">닫기</button>';
+ byId("ovc").innerHTML=h;byId("ov").classList.add("on");
+}
+function pickInfo(i){ closeOv(); curInfo=(i===-1)?(WHITE+CUR.k+"_주간평가_해설서.html"):EXTRA[i].f; STAGE="info";renderStage(); }
+function toggleFull(){ var v=byId("viewer"); if(!document.fullscreenElement){if(v.requestFullscreen)v.requestFullscreen();}else{document.exitFullscreen();} }
+function syncFull(){ var b=byId("fullBtn");if(b){var on=!!document.fullscreenElement;b.textContent=on?"전체화면 최소":"전체화면";b.className="tool"+(on?" act":"");} }
+document.addEventListener("fullscreenchange",syncFull);
+function openTestTab(){ if(CUR)window.open(testUrl(CUR.qid),"_blank"); }
+function closeView(){ byId("viewer").classList.remove("on");byId("stage").innerHTML="";document.body.style.overflow="";if(document.fullscreenElement)document.exitFullscreen(); }
+function closeOv(){ byId("ov").classList.remove("on"); }
+window.addEventListener("message",function(e){var d=e&&e.data;if(!d||d.itall!=="submitted")return;if(TYPE==="month"&&(!d.quiz||d.quiz===CUR.qid))monthSubmitted=true;});
+document.addEventListener("keydown",function(e){
+ if(byId("ov").classList.contains("on")){if(e.key==="Escape")closeOv();return;}
+ if(!byId("viewer").classList.contains("on"))return;
+ if(e.key==="Escape")closeView();
+ else if(e.key==="ArrowRight"||e.key==="Enter"){e.preventDefault();next();}
+ else if(e.key==="ArrowLeft")prev();
+});
+</script>
+</body></html>
