@@ -45,6 +45,13 @@ h1{font-family:'Noto Serif KR',serif;font-size:clamp(22px,3.2vw,30px);font-weigh
 .pane iframe{flex:1;width:100%;border:0;background:#fff}
 .testwrap{position:relative}
 .testfallback{position:absolute;top:8px;right:8px;font-family:'DM Mono',monospace;font-size:11px;background:#fff;border:1px solid var(--bordstrong);border-radius:6px;padding:4px 8px;color:var(--teal);text-decoration:none}
+.startcover{position:absolute;inset:0;background:var(--card);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;z-index:5}
+.startcover .sc-t{font-family:'Noto Serif KR',serif;font-weight:800;color:var(--ink);font-size:18px;margin-bottom:10px}
+.startcover .sc-d{font-size:13.5px;color:var(--dim);line-height:1.75;max-width:380px;margin:0 auto}
+.examclock{margin:auto 12px 12px;background:var(--ink);color:#fff;font-family:'DM Mono',monospace;font-weight:600;text-align:center;padding:16px 10px;border-radius:10px;font-size:24px;letter-spacing:1px}
+.examclock.warn{background:var(--amber)}
+.examclock.danger{background:var(--red)}
+.examclock.done{background:var(--green);font-size:18px}
 .gotest{background:var(--purple);color:#fffdf7;border:none;border-radius:8px;padding:11px 16px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:14px;width:100%}
 .gotest:hover{background:#674d94}
 .note{font-size:13.5px;color:var(--text);padding:14px;line-height:1.75}
@@ -67,9 +74,13 @@ h1{font-family:'Noto Serif KR',serif;font-size:clamp(22px,3.2vw,30px);font-weigh
 .ovbtn{margin-top:6px;width:100%;background:var(--purple);color:#fffdf7;border:0;border-radius:9px;padding:11px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer}
 .ovghost{margin-top:8px;width:100%;background:transparent;color:var(--dim);border:1px solid var(--border);border-radius:9px;padding:9px;font-size:13px;font-family:inherit;cursor:pointer}
 @media(max-width:860px){
- .panes{grid-template-columns:1fr;grid-auto-rows:minmax(72vh,auto)}
- .rail{flex-direction:row;flex-wrap:wrap;justify-content:center;order:-1}
- .rbtn{min-width:104px}
+ .panes{grid-template-columns:1fr;grid-auto-rows:auto;align-content:start;overflow-y:auto;-webkit-overflow-scrolling:touch}
+ .rail{flex-direction:row;flex-wrap:wrap;justify-content:center;order:-1;gap:6px}
+ .rbtn{flex:1 1 28%;min-width:88px;min-height:44px;font-size:11.5px}
+ .testwrap{order:1;min-height:84vh}
+ .leftcol{order:2}
+ .vhead .vt{font-size:14px}
+ .panes .ph{padding:9px 11px}
 }
 </style></head><body>
 
@@ -111,6 +122,14 @@ function byId(x){return document.getElementById(x);}
 function enc(f){return encodeURI(f);}
 function testUrl(qid){return GAS+"?quiz="+encodeURIComponent(qid);}
 var CUR=null, stage="test", solUnlocked=false;
+var examStarted=false, amActive=false, otherActive=false;
+var MYID=Math.random().toString(36).slice(2);
+var bc=("BroadcastChannel" in window)?new BroadcastChannel("itall_month_exam"):null;
+if(bc) bc.onmessage=function(ev){
+ var m=(ev&&ev.data)||{};
+ if(m.t==="ping" && amActive && m.from!==MYID){ try{bc.postMessage({t:"pong",to:m.from});}catch(e){} }
+ if(m.t==="pong" && m.to===MYID){ otherActive=true; }
+};
 
 var QS=new URLSearchParams(location.search);
 var UPTO=parseInt(QS.get("upto"),10); if(!UPTO||isNaN(UPTO)||UPTO<1) UPTO=99;
@@ -146,12 +165,16 @@ function railBtn(label,title,onclick,id){
 }
 function rail(){
  var h='';
- h+=railBtn("메인화면 가기","목록(메인)으로","closeView()");
+ h+=railBtn("메인화면 가기","목록(메인)으로","closeView()","mainBtn");
  h+=railBtn("해설","해설 보기/숨기기","toggleSol()","solBtn");
  h+=railBtn("정보","참고자료 보기/숨기기","toggleInfo()","infoBtn");
  h+=railBtn("전체화면","전체화면 토글","toggleFull()","fullBtn");
- h+=railBtn("새 탭 시험","테스트를 새 탭에서 열기","openTestTab()");
+ h+=railBtn("새 탭 시험","테스트를 새 탭에서 열기","openTestTab()","tabBtn");
  return '<div class="rail">'+h+'</div>';
+}
+function railLock(on){
+ ["mainBtn","solBtn","infoBtn","tabBtn"].forEach(function(id){ var b=byId(id); if(b) b.style.display=on?"none":""; });
+ var f=byId("stfall"); if(f) f.style.display=on?"none":"";
 }
 function whiten(frame){
  if(!frame) return;
@@ -160,7 +183,10 @@ function whiten(frame){
  });
 }
 function stagePane(qid){
- return '<div class="pane test testwrap" id="stwrap"><div class="ph test" id="stph"><span class="nmtxt" id="stlabel">테스트</span> <span class="fn" id="stfn">서버 채점</span><button class="phbtn" id="stback" style="display:none" onclick="backToTest()">← 테스트로</button></div><iframe id="stframe" src="'+testUrl(qid)+'"></iframe><a class="testfallback" id="stfall" href="'+testUrl(qid)+'" target="_blank">새 탭 ↗</a></div>';
+ return '<div class="pane test testwrap" id="stwrap"><div class="ph test" id="stph"><span class="nmtxt" id="stlabel">테스트</span> <span class="fn" id="stfn">서버 채점</span><button class="phbtn" id="stback" style="display:none" onclick="backToTest()">← 테스트로</button></div>'+
+  '<iframe id="stframe" src="about:blank"></iframe>'+
+  '<div class="startcover" id="startcover"><div><div class="sc-t">아직 시험이 시작되지 않았습니다</div><div class="sc-d">왼쪽에서 요약을 충분히 본 뒤 <b>「시험 응시 →」</b>를 누르면 문제가 표시되고 <b>제한시간</b>이 시작됩니다. 시작 후에는 요약을 볼 수 없습니다.</div></div></div>'+
+  '<a class="testfallback" id="stfall" href="'+testUrl(qid)+'" target="_blank" style="display:none">새 탭 ↗</a></div>';
 }
 function setStage(kind,src,label,fn,phcls,doWhiten){
  var fr=byId("stframe"); if(!fr) return;
@@ -173,7 +199,7 @@ function setStage(kind,src,label,fn,phcls,doWhiten){
 }
 function backToTest(){ if(!CUR) return; setStage("test",testUrl(CUR.qid),"테스트","서버 채점","test",false); }
 function showSol(){ if(!CUR) return; setStage("sol",enc(WHITE+CUR.k+"_월말평가_해설서.html"),"해설서",CUR.k+"_해설","sol",true); }
-function showSummary(i){ setStage("summary",enc(WHITE+"W"+i+"_요약자료.html"),"W"+i+" 요약","요약자료","sum",true); }
+function showSummary(i){ if(examStarted){ lockedNotice(); return; } setStage("summary",enc(WHITE+"W"+i+"_요약자료.html"),"W"+i+" 요약","요약자료","sum",true); }
 function showInfo(file,name){ setStage("info",enc(file),name,"참고자료","info",true); }
 function updateStageBtns(){
  var s=byId("solBtn"), inf=byId("infoBtn");
@@ -182,7 +208,7 @@ function updateStageBtns(){
 }
 
 function openMonth(m){
- CUR=m; stage="test"; solUnlocked=false;
+ CUR=m; stage="test"; solUnlocked=false; examStarted=false; amActive=false;
  byId("vchip").textContent=m.k;
  byId("vtitle").textContent=m.t; byId("vdate").textContent=m.d+" · "+m.rng+" 누적";
  var links=m.incl.map(function(i){return '<span class="mlink" onclick="showSummary('+i+')">W'+i+' 요약</span>';}).join("");
@@ -190,14 +216,55 @@ function openMonth(m){
  p.innerHTML=
   '<div class="leftcol">'+
    '<div class="pane"><div class="ph info"><span class="nmtxt">누적 범위</span> <span class="fn">'+m.rng+'</span></div>'+
-     '<div class="note">이 월말평가는 <b>'+m.rng+'</b>의 누적 점검입니다. 아래 <b>주차별 요약</b>을 누르면 오른쪽 화면에 표시됩니다.<div class="mlist">'+links+'</div>'+
-     '<button class="gotest" onclick="backToTest()">시험 응시 →</button>'+
-     '<div class="note" style="padding:10px 0 0;font-size:12.5px;color:var(--dim)">※ 해설은 오른쪽에서 <b>제출하고 채점하기</b>를 마친 뒤 <b>해설</b> 버튼으로 여세요.</div></div></div>'+
+     '<div class="note">이 월말평가는 <b>'+m.rng+'</b>의 누적 점검입니다. <b>시험 응시 전에</b> 아래 <b>주차별 요약</b>을 미리 보세요 — <b>「시험 응시」를 누르면 요약·참고자료 열람이 잠깁니다.</b><div class="mlist">'+links+'</div>'+
+     '<button class="gotest" onclick="startExam()">시험 응시 →</button>'+
+     '<div class="note" style="padding:10px 0 0;font-size:12.5px;color:var(--dim)">※ 응시 후에는 이전 자료를 볼 수 없습니다. 제출·채점을 마치면 <b>해설</b> 버튼이 열립니다.</div></div></div>'+
   '</div>'+
   stagePane(m.qid)+
   rail();
  updateStageBtns(); syncFullBtn();
  byId("viewer").classList.add("on"); document.body.style.overflow="hidden";
+}
+
+/* 시험 응시 — 누르면 요약·참고자료 열람을 잠금. (같은 브라우저 중복 응시 감지) */
+function startExam(){
+ if(!CUR) return;
+ if(bc){
+  otherActive=false;
+  try{ bc.postMessage({t:"ping",from:MYID}); }catch(e){}
+  setTimeout(function(){ if(otherActive){ showDupBlock(); } else { reallyStartExam(); } },300);
+ } else { reallyStartExam(); }
+}
+function reallyStartExam(){
+ examStarted=true; amActive=true;
+ var lc=document.querySelector("#panes .leftcol");
+ if(lc) lc.innerHTML='<div class="pane"><div class="ph info"><span class="nmtxt">시험 진행 중</span> <span class="fn">'+CUR.rng+'</span></div>'+
+  '<div class="note"><b>요약·참고자료 열람이 잠겼습니다.</b><br><br>월말 종합평가는 인사 반영 평가이므로, 응시 중에는 이전 주차 요약을 볼 수 없습니다.<br><br>오른쪽 문제를 <b>제한시간 안에</b> 모두 풀고 <b>제출하고 채점하기</b>를 누르세요. 시간이 끝나면 <b>자동 제출</b>됩니다. 제출·채점 후 <b>해설</b> 버튼이 열립니다.</div>'+
+  '<div class="examclock" id="examclock">⏱ 남은 시간  --:--</div></div>';
+ railLock(true);
+ var cov=byId("startcover"); if(cov) cov.style.display="none";
+ var fr=byId("stframe"); if(fr) fr.src=testUrl(CUR.qid);
+ stage="test"; updateStageBtns();
+}
+function updateExamClock(left){
+ var c=byId("examclock"); if(!c) return;
+ left=Math.max(0, left|0); var m=Math.floor(left/60), s=left%60;
+ c.textContent="⏱ 남은 시간  "+m+":"+(s<10?"0":"")+s;
+ c.className="examclock"+(left<=10?" danger":(left<=60?" warn":""));
+}
+function showDupBlock(){
+ byId("ovcard").innerHTML='<h3>이미 다른 창에서 진행 중</h3>'+
+  '<p>같은 브라우저의 <b>다른 창/탭에서 월말 시험이 이미 열려</b> 있습니다.</p>'+
+  '<p style="color:var(--dim)">한 창에서만 응시하세요. 다른 창을 닫은 뒤 다시 시도하면 됩니다.</p>'+
+  '<button class="ovbtn" onclick="closeOv()">확인</button>';
+ byId("ov").classList.add("on");
+}
+function lockedNotice(){
+ byId("ovcard").innerHTML='<h3>열람 잠금</h3>'+
+  '<p>시험이 시작되어 <b>요약·참고자료 열람이 잠겼습니다.</b></p>'+
+  '<p style="color:var(--dim)">월말 종합평가는 인사 반영 평가라, 응시 중에는 이전 자료를 볼 수 없습니다. 문제를 모두 풀고 제출·채점을 마치세요.</p>'+
+  '<button class="ovbtn" onclick="closeOv()">확인</button>';
+ byId("ov").classList.add("on");
 }
 
 /* 해설 — 오른쪽 테스트에서 '제출하고 채점하기'를 실제로 마치면(서버 신호 수신) 자동 해제 */
@@ -217,6 +284,7 @@ function noticeSol(){
 
 function toggleInfo(){
  if(!CUR) return;
+ if(examStarted){ lockedNotice(); return; }
  if(stage==="info"){ backToTest(); return; }
  var h='<h3>참고 자료 선택</h3><p>선택하면 오른쪽 화면에 표시됩니다.</p>';
  EXTRA.forEach(function(e,idx){ h+='<a class="ovlink" onclick="pickInfo('+idx+')"><span class="i">▣</span>'+e.n+'</a>'; });
@@ -228,6 +296,7 @@ function pickInfo(idx){ closeOv(); var e=EXTRA[idx]; showInfo(e.f,e.n); }
 function openTestTab(){ if(CUR) window.open(testUrl(CUR.qid),"_blank"); }
 function closeView(){
  byId("viewer").classList.remove("on"); byId("panes").innerHTML=""; document.body.style.overflow="";
+ amActive=false; examStarted=false;
  if(document.fullscreenElement) document.exitFullscreen();
 }
 function toggleFull(){
@@ -240,11 +309,15 @@ document.addEventListener("fullscreenchange",syncFullBtn);
 
 /* GAS 테스트가 제출 완료를 알려오면 해설 자동 해제 */
 window.addEventListener("message",function(e){
- var d=e&&e.data; if(!d||d.itall!=="submitted") return;
+ var d=e&&e.data; if(!d) return;
+ if(d.itall==="tick"){ updateExamClock(d.left); return; }
+ if(d.itall!=="submitted") return;
  if(CUR && d.quiz && d.quiz!==CUR.qid) return;
+ var c=byId("examclock"); if(c){ c.textContent="제출 완료"; c.className="examclock done"; }
  solUnlocked=true; updateStageBtns();
+ var mb=byId("mainBtn"); if(mb) mb.style.display="";
  var s=byId("solBtn");
- if(s){ s.title="응시 완료 감지됨 · 이제 해설을 열 수 있습니다"; s.textContent="해설 ✓"; s.classList.remove("locked"); s.classList.add("act"); setTimeout(function(){ if(stage!=="sol"){ s.classList.remove("act"); updateStageBtns(); } },1800); }
+ if(s){ s.style.display=""; s.title="응시 완료 감지됨 · 이제 해설을 열 수 있습니다"; s.textContent="해설 ✓"; s.classList.remove("locked"); s.classList.add("act"); setTimeout(function(){ if(stage!=="sol"){ s.classList.remove("act"); updateStageBtns(); } },1800); }
 });
 
 function closeOv(){ byId("ov").classList.remove("on"); }
