@@ -120,7 +120,7 @@ var MONTHS = [
 var EXTRA = [
  {n:"부록 · 정시 수능100/저학생부/검정고시 길",f:"부록_정시수능100_저학생부_검정고시길.html"},
  {n:"전체 커리큘럼 · 종합안내",f:"00_전체커리큘럼_종합안내.html"},
- {n:"상위15개대 2028 시행계획 브리핑",f:"부록_상위15개대_2028시행계획.html"}
+ {n:"상위15개대 2028 시행계획 브리핑",f:"부록_상위15개대_2028시행계획.html",full:true}
 ];
 
 function byId(x){return document.getElementById(x);}
@@ -309,7 +309,7 @@ function toggleInfo(){
  if(stage==="info"){ backToTest(); return; }
  var m=byId("stmenu"); if(!m) return;
  var h='<div class="stmenu-h">참고 자료 — 항목을 누르면 이 자리에 표시됩니다</div>';
- EXTRA.forEach(function(e,idx){ h+='<button class="stmenu-i" onclick="pickInfo('+idx+')">▣ '+e.n+'</button>'; });
+ EXTRA.forEach(function(e,idx){ if(e.full && UPTO<99) return; h+='<button class="stmenu-i" onclick="pickInfo('+idx+')">▣ '+e.n+'</button>'; });
  m.innerHTML=h; m.style.display="flex";
  byId("startcover").style.display="none";
  byId("stlabel").textContent="참고 자료"; byId("stfn").textContent="선택"; byId("stph").className="ph info";

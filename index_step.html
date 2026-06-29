@@ -155,7 +155,7 @@ var EXTRA=[
  {n:"부록 · 정시 수능100/저학생부/검정고시 길",f:"부록_정시수능100_저학생부_검정고시길.html"},
  {n:"전체 커리큘럼 · 종합안내",f:"00_전체커리큘럼_종합안내.html"},
  {n:"12주 로드맵",f:"00_로드맵_12주_커리큘럼.html"},
- {n:"상위15개대 2028 시행계획 브리핑",f:"부록_상위15개대_2028시행계획.html"}
+ {n:"상위15개대 2028 시행계획 브리핑",f:"부록_상위15개대_2028시행계획.html",full:true}
 ];
 
 function byId(x){return document.getElementById(x);}
@@ -199,7 +199,7 @@ var UPTO=parseInt(QS.get("upto"),10); if(!UPTO||isNaN(UPTO)||UPTO<1) UPTO=99;
   }
  });
  var rf=byId("refs");
- EXTRA.forEach(function(e){var b=document.createElement("div");b.className="ref";b.textContent=e.n;b.onclick=function(){window.open(enc(e.f),"_blank");};rf.appendChild(b);});
+ EXTRA.forEach(function(e){if(e.full && UPTO<99) return;var b=document.createElement("div");b.className="ref";b.textContent=e.n;b.onclick=function(){window.open(enc(e.f),"_blank");};rf.appendChild(b);});
  updateProg();
 })();
 
@@ -269,7 +269,7 @@ function noticeSol(){
 function toggleInfo(){
  if(STAGE==="info"){ toStep();return; }
  var h='<h3>참고 자료 선택</h3><p>선택하면 화면에 표시됩니다.</p>';
- EXTRA.forEach(function(e,i){h+='<div class="ovl" onclick="pickInfo('+i+')">▣ '+e.n+'</div>';});
+ EXTRA.forEach(function(e,i){if(e.full && UPTO<99) return;h+='<div class="ovl" onclick="pickInfo('+i+')">▣ '+e.n+'</div>';});
  if(TYPE==="week"){h+='<div class="ovl" onclick="pickInfo(-1)">✓ '+CUR.k+' 해설서</div>';}
  h+='<button class="ovx" onclick="closeOv()">닫기</button>';
  byId("ovc").innerHTML=h;byId("ov").classList.add("on");
