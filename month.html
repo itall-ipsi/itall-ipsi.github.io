@@ -185,8 +185,15 @@ function whiten(frame){
   try{ var d=frame.contentDocument; if(d){ d.documentElement.style.background="#fff"; if(d.body) d.body.style.background="#fff"; } }catch(e){}
  });
 }
+function printFrame(btn){
+ var pane=(btn&&btn.closest)?btn.closest(".pane"):null;
+ var fr=pane?pane.querySelector("iframe"):null;
+ if(!fr){ window.print(); return; }
+ try{ fr.contentWindow.focus(); fr.contentWindow.print(); }
+ catch(e){ alert("이 화면은 여기서 인쇄할 수 없습니다."); }
+}
 function stagePane(qid){
- return '<div class="pane test testwrap" id="stwrap"><div class="ph test" id="stph"><span class="nmtxt" id="stlabel">테스트</span> <span class="fn" id="stfn">서버 채점</span><button class="phbtn" id="stback" style="display:none" onclick="backToTest()">← 테스트로</button></div>'+
+ return '<div class="pane test testwrap" id="stwrap"><div class="ph test" id="stph"><span class="nmtxt" id="stlabel">테스트</span> <span class="fn" id="stfn">서버 채점</span><button class="phbtn" id="stprint" style="display:none" onclick="printFrame(this)">🖨 인쇄</button><button class="phbtn" id="stback" style="display:none" onclick="backToTest()">← 테스트로</button></div>'+
   '<iframe id="stframe" src="about:blank"></iframe>'+
   '<div class="startcover" id="startcover"><div><div class="sc-t">아직 시험이 시작되지 않았습니다</div><div class="sc-d">왼쪽에서 요약을 충분히 본 뒤 <b>「시험 응시 →」</b>를 누르세요. 그러면 이 자리에 <b>이름 입력 화면</b>이 나오고, 이름/소속을 넣고 <b>「시험 시작하기」</b>를 눌러야 문제와 <b>제한시간</b>이 시작됩니다. 시작 후에는 요약을 볼 수 없습니다.</div></div></div>'+
   '<div class="stmenu" id="stmenu"></div></div>';
@@ -197,6 +204,7 @@ function setStage(kind,src,label,fn,phcls,doWhiten){
  byId("stlabel").textContent=label; byId("stfn").textContent=fn;
  byId("stph").className="ph "+phcls;
  byId("stback").style.display=(kind==="test")?"none":"";
+ var pb=byId("stprint"); if(pb) pb.style.display=(kind==="test")?"none":"";
  var f=byId("stfall"); if(f){ if(kind==="test"){ f.style.display=""; f.href=testUrl(CUR.qid);} else f.style.display="none"; }
  stage=kind; updateStageBtns();
 }

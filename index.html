@@ -224,9 +224,16 @@ function whiten(frame){
   try{ var d=frame.contentDocument; if(d){ d.documentElement.style.background="#fff"; if(d.body) d.body.style.background="#fff"; } }catch(e){}
  });
 }
+function printFrame(btn){
+ var pane=(btn&&btn.closest)?btn.closest(".pane"):null;
+ var fr=pane?pane.querySelector("iframe"):null;
+ if(!fr){ window.print(); return; }
+ try{ fr.contentWindow.focus(); fr.contentWindow.print(); }
+ catch(e){ alert("이 화면은 여기서 인쇄할 수 없습니다. 시험 문제는 시험 화면의 「문제 인쇄」 버튼을 사용하세요."); }
+}
 /* 오른쪽 '스테이지' 패널 HTML (테스트·해설·정보·요약을 같은 자리에서 교체) */
 function stagePane(qid){
- return '<div class="pane test testwrap" id="stwrap"><div class="ph test" id="stph"><span class="nmtxt" id="stlabel">테스트</span> <span class="fn" id="stfn">서버 채점</span><button class="phbtn" id="stback" style="display:none" onclick="backToTest()">← 테스트로</button></div><iframe id="stframe" src="'+testUrl(qid)+'"></iframe><a class="testfallback" id="stfall" href="'+testUrl(qid)+'" target="_blank">새 탭 ↗</a></div>';
+ return '<div class="pane test testwrap" id="stwrap"><div class="ph test" id="stph"><span class="nmtxt" id="stlabel">테스트</span> <span class="fn" id="stfn">서버 채점</span><button class="phbtn" id="stprint" style="display:none" onclick="printFrame(this)">🖨 인쇄</button><button class="phbtn" id="stback" style="display:none" onclick="backToTest()">← 테스트로</button></div><iframe id="stframe" src="'+testUrl(qid)+'"></iframe><a class="testfallback" id="stfall" href="'+testUrl(qid)+'" target="_blank">새 탭 ↗</a></div>';
 }
 function setStage(kind,src,label,fn,phcls,doWhiten){
  var fr=byId("stframe"); if(!fr) return;
@@ -234,6 +241,7 @@ function setStage(kind,src,label,fn,phcls,doWhiten){
  byId("stlabel").textContent=label; byId("stfn").textContent=fn;
  byId("stph").className="ph "+phcls;
  byId("stback").style.display=(kind==="test")?"none":"";
+ var pb=byId("stprint"); if(pb) pb.style.display=(kind==="test")?"none":"";
  var f=byId("stfall"); if(f){ if(kind==="test"){ f.style.display=""; f.href=testUrl(CUR.o.qid);} else f.style.display="none"; }
  stage=kind; updateStageBtns();
 }
@@ -265,8 +273,8 @@ function openWeek(w){
  var p=byId("panes"); p.className="panes weekly";
  p.innerHTML=
   '<div class="leftcol" id="leftcol">'+
-   '<div class="pane lt"><div class="ph sum"><span class="nmtxt">요약</span> <span class="fn">'+w.k+'_요약자료</span><button class="phbtn" id="sumBtn" onclick="toggleLeft(\'exp-sum\')">펼쳐보기</button></div><iframe src="'+enc(WHITE+w.k+"_요약자료.html")+'"></iframe></div>'+
-   '<div class="pane lb"><div class="ph det"><span class="nmtxt" id="lbph">상세</span> <span class="fn" id="lbname">'+w.k+'_세부안내</span><button class="phbtn" id="detBtn" onclick="toggleLeft(\'exp-det\')">펼쳐보기</button></div><iframe id="lbframe" src="'+enc(WHITE+w.k+"_세부안내.html")+'"></iframe></div>'+
+   '<div class="pane lt"><div class="ph sum"><span class="nmtxt">요약</span> <span class="fn">'+w.k+'_요약자료</span><button class="phbtn" onclick="printFrame(this)">🖨 인쇄</button><button class="phbtn" id="sumBtn" onclick="toggleLeft(\'exp-sum\')">펼쳐보기</button></div><iframe src="'+enc(WHITE+w.k+"_요약자료.html")+'"></iframe></div>'+
+   '<div class="pane lb"><div class="ph det"><span class="nmtxt" id="lbph">상세</span> <span class="fn" id="lbname">'+w.k+'_세부안내</span><button class="phbtn" onclick="printFrame(this)">🖨 인쇄</button><button class="phbtn" id="detBtn" onclick="toggleLeft(\'exp-det\')">펼쳐보기</button></div><iframe id="lbframe" src="'+enc(WHITE+w.k+"_세부안내.html")+'"></iframe></div>'+
   '</div>'+
   stagePane(w.qid)+
   rail(true);
